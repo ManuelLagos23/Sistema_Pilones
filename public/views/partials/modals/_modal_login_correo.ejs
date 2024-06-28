@@ -1,0 +1,138 @@
+
+
+
+<div class="modal fade" id="createLoginCorreoModal" tabindex="-1" aria-labelledby="createLoginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 40%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="createLoginModal"><i
+                        class="bi bi-box-arrow-down"></i> <p id="titlelogin"  style="display: inline;">Login correo</p></h5>
+
+
+                        <a>
+                            <button type="button" class="nav-link px-2"
+                            style="color: #FFFFFF;; background: #00a09d; padding: 4px; border-radius: 10px"
+                            data-bs-toggle="modal"data-bs-target="#informacionLoginModal"><i ></i> Atrás
+                                
+                            </button>
+                        </a>
+            </div>
+            <div class="modal-body">
+                <form id="createLoginCorreoForm">
+                    <div class="row mb-3">
+
+
+                        <label id="label_email" for="nombre" class="col-sm-3 col-form-label form-label0">Email:</label>
+                        <div class="col-sm-7">
+                            <input style="text-align: center;" type="email" id="login_email" name="nombre_clase" class="form-control"
+                             placeholder="diademazonafranca@davidoff.com"    required><br>
+                        </div>
+
+                        <label id="label_password" for="nombre" class="col-sm-3 col-form-label form-label0">Contraseña:</label>
+                        <div class="col-sm-7">
+                            <input  style="text-align: center;"  type="password" id="login_password" name="nombre_clase" class="form-control"
+                                placeholder="***************" ><br>
+                        </div>
+
+                        
+               
+
+                    <button id="createCorreoLoginButton" class="btn btn-success" style="background: #00a09d; width: 30%; margin-left: 35%; margin-right: 35%;"
+                        type="submit">Nuevo remitente</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<div class="modal fade" id="successLoginModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El nuevo remitente se agregó exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div id="cerrarSesionModal" class="modal fade" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 40%;">
+      <div class="modal-content">
+        <div class="modal-header" style="background: #875a7b;">
+          <h5 class="modal-title" style="color: #ffffff;" id="logoutModalLabel"><i class="bi bi-box-arrow-up"></i> Cerrar sesión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro que deseas cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="confirmLogoutBtn" type="button" class="btn btn-danger">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <script>
+    $(document).ready(function() {
+     
+      const acceptBtn = document.getElementById('confirmLogoutBtn');
+  
+      
+      acceptBtn.addEventListener('click', function() {
+        fetch('/logout', {
+          method: 'GET',
+          credentials: 'same-origin' 
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json(); 
+          }
+          throw new Error('Error al cerrar sesión');
+        })
+        .then(data => {
+          console.log('Sesión cerrada correctamente:', data);
+        
+          window.location.href = '/login';
+        })
+        .catch(error => {
+          console.error('Error al cerrar sesión:', error);
+          alert('Error al cerrar sesión. Inténtalo de nuevo.');
+        })
+        .finally(() => {
+          $('#logoutModal').modal('hide'); 
+        });
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

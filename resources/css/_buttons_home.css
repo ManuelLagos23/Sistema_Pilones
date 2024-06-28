@@ -1,0 +1,136 @@
+#saveTemps,
+#saveAllTemps {
+    appearance: button;
+    background-color:#00a09d ;
+    border: solid transparent;
+    border-radius: 10px;
+
+
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    line-height: 20px;
+    margin: 5px;
+    outline: none;
+    overflow: visible;
+    padding: 10px;
+    text-align: center;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    font-weight: bold; 
+}
+
+#saveTemps:after,
+#saveAllTemps:after {
+    background-clip: padding-box;
+    background-color:#00a09d;
+    border: solid transparent;
+    border-radius: 10x;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+#saveTemps:main,
+#saveAllTemps:main,
+#saveTemps:focus,
+#saveAllTemps:focus {
+    user-select: auto;
+}
+
+#saveTemps:hover:not(:disabled),
+#saveAllTemps:hover:not(:disabled) {
+    filter: brightness(1.1);
+    transition: 200ms;
+}
+
+#saveTemps:disabled,
+#saveAllTemps:disabled {
+    cursor: auto;
+}
+
+#saveTemps:active:after,
+#saveAllTemps:active:after {
+    border-width: 0 0 0px;
+}
+
+#saveTemps:active,
+#saveAllTemps:active {
+    padding-bottom: 10px;
+}
+
+.options {
+    appearance: button;
+    background-color:#00a09d ;
+    border: solid transparent;
+    border-radius: 10px;
+
+
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    line-height: 20px;
+    margin: 5px;
+    outline: none;
+    overflow: visible;
+    padding: 10px;
+    text-align: center;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    font-weight: bold; 
+    display: none;
+}
+
+#saveTurningWettingButton {
+    appearance: button;
+    background-color:#00a09d ;
+    border: solid transparent;
+    border-radius: 10px;
+
+
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    line-height: 20px;
+    margin: 5px;
+    outline: none;
+    overflow: visible;
+    padding: 10px;
+    text-align: center;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    font-weight: bold; 
+
+
+}
+
+

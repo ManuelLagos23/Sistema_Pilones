@@ -1,0 +1,57 @@
+
+<!-- Agregar MODAL -->
+<div class="modal fade" id="temperaturaManual" tabindex="-1" 
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div  style="background: #875a7b; border-radius: 5px; " class="modal-header" style="background: linear-gradient(to right, #82694e, #e2ba87, #fcdfb8);">
+                <h5 class="modal-title" style="color: #ffffff;" id="createWorkerModal"><i
+                        class="bi bi-box-arrow-down"></i> <p id="titleworker"  style="display: inline;">Temperatura manualmente</p></h5>
+            </div>
+            <div class="modal-body">
+                <form id="temperaturaManual">
+                    <div class="row mb-3">
+                        <label id="temperaturaManual" for="temp" class="col-sm-3 col-form-label form-label0">Temperatura en grados fahrenheit</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="temp" name="temp" class="form-control"
+                                placeholder="Ejemplo: 85 Cº " required><br>
+                        </div>
+                    </div>
+
+                    <button id="agregarTemperatura" class="btn btn-success" style="background: #00a09d"
+                        type="button">Agregar temperatura</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Obtener referencia al botón, input y span
+    var agregarTemperaturaBtn = document.getElementById('agregarTemperatura');
+    var tempInput = document.getElementById('temp');
+    var displayTemp = document.getElementById('display_temp');
+
+    // Variable para almacenar el contenido del span
+    var temperaturaGuardada = '';
+
+    // Agregar un evento de clic al botón
+    agregarTemperaturaBtn.addEventListener('click', function() {
+        // Obtener el valor del input
+        var temperatura = tempInput.value;
+        // Concatenar el símbolo °F al contenido de la temperatura
+        temperatura += ' F°';
+        // Establecer el valor del input como texto del span
+        displayTemp.innerText = temperatura;
+        // Guardar el contenido del span en la variable
+        temperaturaGuardada = temperatura;
+        // Cerrar el modal
+        $('#temperaturaManual').modal('hide');
+    });
+
+    // Agregar un evento para cuando el modal se oculta
+    $('#temperaturaManual').on('hidden.bs.modal', function () {
+        // Restaurar el contenido del span cuando se oculta el modal
+        displayTemp.innerText = temperaturaGuardada;
+    });
+</script>

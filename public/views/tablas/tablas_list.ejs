@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vista Elegante</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+   
+</head>
+<body>
+
+    <%- include('../partials/navbar/_navbar') %>
+    <%- include('../partials/modals/_modal_variedad') %>
+    <%- include('../partials/modals/_modal_corte') %>
+    <%- include('../partials/modals/_modal_clase') %>
+    <%- include('../partials/modals/_modal_finca') %>
+    <%- include('../partials/modals/_modal_etapa') %>
+    <%- include('../partials/modals/_modal_tipo') %>
+    <%- include('../partials/modals/_modal_proceso') %>
+  
+
+   
+<a class="btn options" href="/tablas_list" id="options" data-toggle="modal" data-target="#turningWettingModal">Nueva variedad</a>
+
+<script src="/resources/js/_variedad_scripts.js"></script>
+<script src="/resources/js/_corte_scripts.js"></script>
+<script src="/resources/js/_clase_scripts.js"></script>
+<script src="/resources/js/_finca_scripts.js"></script>
+<script src="/resources/js/_etapa_scripts.js"></script>
+<script src="/resources/js/_tipo_scripts.js"></script>
+<script src="/resources/js/_proceso_scripts.js"></script>
+</body>
+</html>

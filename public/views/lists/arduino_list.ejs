@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title >Sensores</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+   
+
+    
+</head>
+
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+        <%- include('../partials/modals/_modal_arduinos') %>
+        <%- include('../partials/modals/_modal_sensor') %>
+        <%- include('../partials/modals/_modal_variedad') %>
+        <%- include('../partials/modals/_modal_corte') %>
+        <%- include('../partials/modals/_modal_clase') %>
+        <%- include('../partials/modals/_modal_finca') %>
+        <%- include('../partials/modals/_modal_etapa') %>
+        <%- include('../partials/modals/_modal_tipo') %>
+        <%- include('../partials/modals/_modal_proceso') %>
+
+        <%- include('../partials/modals/_modal_correo') %>
+        <%- include('../partials/modals/_modal_login_correo') %>
+        <%- include('../partials/modals/_modal_informacion_login') %>
+            <div  class="mt-2 toggle-div">
+                <label for="">Mostrar/Ocultar columnas: </label>
+                <a  class="toggle-vis" data-column="0">Nombre del sensor</a>&nbsp;
+                <a class="toggle-vis" data-column="1">Dirección sel sensor</a>&nbsp;
+                <a id="showport" class="toggle-vis" data-column="2">Conectado al puerto</a>&nbsp;
+                <a class="toggle-vis" data-column="3">Asignado al pilón</a>&nbsp;
+          
+            </div>
+
+
+            <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+                <div class="table-responsive small justify-content-sm-center">
+                    <table id="myTableArduinos" class="display table table-striped table-sm table-bordered">
+                        <thead class="table-success">
+                            <tr>
+                                <th style="text-align: center;"    scope="col">Nombre del sensor</th>
+                                <th style="text-align: center;"  scope="col">Dirección del sensor</th>
+                                <th style="text-align: center;"   scope="col">Conectado al puerto</th>
+                                <th style="text-align: center;"  scope="col">Asignado al pilón</th>
+                                <th style="text-align: center;"  scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="arduinosList">
+                            <!-- Records will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+            <!-- SCRIPTS -->
+            <script src="/resources/js/_arduino_scripts.js"></script>
+            <script src="/resources/js/language/_language_change.js" ></script>     
+
+       
+          
+
+          
+            <script src="/resources/js/language/_language_save.js"></script>
+ 
+            
+            
+            <script src="/resources/js/_correo_scripts.js"></script>
+            <script src="/resources/js/_login_correo_scripts.js"></script>
+</body>
+
+</html>

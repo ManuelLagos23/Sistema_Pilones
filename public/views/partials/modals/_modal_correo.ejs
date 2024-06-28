@@ -1,0 +1,151 @@
+
+
+
+<!-- CREATE MODAL -->
+<div class="modal fade" id="createCorreoModal" tabindex="-1" aria-labelledby="createCorreoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div class="modal-header"  style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="createCorreoModal"><i
+                        class="bi bi-box-arrow-down"></i> <p id="titlecorreo"  style="display: inline;">Agregar un nuevo correo</p></h5>
+            </div>
+            <div class="modal-body">
+                <form id="createCorreoForm">
+                    <div class="row mb-3">
+
+
+                        <label id="modalCorreoname" for="correo_nombre" class="col-sm-3 col-form-label form-label0">Nombre:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="correo_nombre" name="correo_nombre" class="form-control"
+                                placeholder="Example: Juan Díaz" required><br>
+                        </div>
+
+                        <label id="modalCorreoname" for="correo_cargo" class="col-sm-3 col-form-label form-label0">Cargo:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="correo_cargo" name="correo_cargo" class="form-control"
+                                placeholder="Example: Gerente de pilones" required><br>
+                        </div>
+
+                        
+                         
+                    <label id="modalCorreoname" for="correo" class="col-sm-3 col-form-label form-label0">Correo electrónico:</label>
+                    <div class="col-sm-9">
+                        <input type="email" id="correo" name="correo" class="form-control"
+                            placeholder="Example: juandiaz@davidoff.com" required><br>
+                    </div>
+                    </div>
+                   
+
+                    <button id="createVariedadButton" class="btn btn-success" style="background: #00a09d"
+                        type="submit">Guardar nuevo correo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editCorreoModal" name="editCorreoModal" tabindex="-1" aria-labelledby="editCorreoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b;">
+                <h5 class="modal-title" style="color: #ffffff;" id="editCorreoModalLabel"><i
+                        class="bi bi-pencil-square just"></i>Actualizar correo</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editCorreoForm">
+                    <input type="hidden" id="correoId" name="corroId">
+
+                    <div class="row mb-3">
+                        <label for="editNombre" class="col-sm-3 col-form-label form-label0">Nombre:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editNombre" name="editNombre" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editCorreo" class="col-sm-3 col-form-label form-label0">Cargo:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editCargo" minlength="16" maxlength="16" name="editCargo" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editCorreo" class="col-sm-3 col-form-label form-label0">Correo electrónico:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editCorreo" minlength="16" maxlength="16" name="editCorreo" class="form-control" required><br>
+                        </div>
+                    </div>
+
+
+                    <button id="updateCorreoButton" class="btn btn-primary"
+                        style="background: #00a09d; border: 0px;" type="submit">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El correo se agregó exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- SUCCESS MODAL UPDATE -->
+<div class="modal fade" id="successCorreoModalUpdate" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El correo se actualizó exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deleteCorreoModal" tabindex="-1" aria-labelledby="deleteCorreoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #890d0d, #890d0dc0, #c90000c0);"">
+                <h5 class=" modal-title" style="color: #ffffff;" id="deleteCorreoModal"><i class="bi bi-trash3"></i>
+                Eliminar</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>¿Está seguro que quiere borrar el correo?</strong>
+          
+                <br><button id="deleteCorreoButton" class="btn btn-primary"
+                    style="background-color: #c90000c0;  border: 0px;" type="button"
+                    onclick="deleteCorreo()">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>

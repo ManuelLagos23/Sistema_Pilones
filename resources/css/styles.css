@@ -1,0 +1,81 @@
+
+  /* Estilos para el formulario */
+
+.container {
+  width: 120%;
+  height: 100%;
+
+
+  
+}
+
+
+.left-div, .right-div {
+  width: 50%; /* Cada div ocupa el 50% del ancho */
+height: 50%;
+  float: left; /* Hace que los divs floten uno al lado del otro */
+  box-sizing: border-box; /* Incluye el relleno y el borde en el ancho */
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: #f5f5f5;
+  
+}
+
+
+
+
+
+
+
+.column {
+  float: left; /* Hace que los elementos se muestren en línea */
+  width: 50%; /* Divide el ancho de la página en dos columnas */
+  padding: 10px; /* Espacio entre las columnas */
+}
+
+h1 {
+  font-family: 'Arial', sans-serif; /* Cambia la fuente a tu preferencia */
+  font-size: 40px; /* Ajusta el tamaño de fuente */
+  color: #000000; /* Cambia el color del texto a tu preferencia */
+  text-transform: uppercase; /* Convierte el texto a mayúsculas */
+  text-align: center; /* Centra el texto en el medio de la página */
+  margin-top: 20px; /* Agrega espacio en la parte superior */
+}
+
+
+
+  /* Estilos para etiquetas y campos de entrada */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+
+  select {
+    width: 70%;
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+  }
+
+
+
+  /* Estilos para el botón */
+ 
+  button:hover {
+    background-color: #266293;
+  }
+  
+  /* Estilo adicional para el contenedor de la página */
+
+  custom-hover:hover {
+    background-color: #266293;
+}

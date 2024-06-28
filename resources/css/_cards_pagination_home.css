@@ -1,0 +1,85 @@
+.info_footer {
+    position: absolute;
+    bottom: 0;
+    min-width: 100%;
+    height: auto;
+    background-color: #e8e8e870;
+    border-radius: 40px;
+    border: 10px solid white;
+}
+
+.info_footer p {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(6, 14.5%);
+    grid-gap: 6.5em;
+    margin-top: 2em;
+    margin-left: 3px;
+}
+
+
+
+
+.card__content {
+    text-align: left;
+    font-size: 15px;
+}
+
+.card {
+    margin-bottom: -5em;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #dbdbdb1c;
+    border-radius: 5px;
+    padding-top: 7px;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 20px;
+}
+
+.pagination>a,
+.pagination>span {
+    color: #383838;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin: 0 2px 5px;
+    min-width: 20px;
+    padding: 0 10px;
+    height: 40px;
+    text-decoration: none;
+    position: relative;
+    border-radius: 5px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.pagination>span {
+    pointer-events: none;
+}
+
+.pagination svg {
+    height: 24px;
+    width: 24px;
+}
+
+.pagination>a.page-active {
+    background: #00a09d;
+    color: #fff;
+}
+
+.pagination>a:hover {
+    background: #00a09d;
+    color: #fff;
+}

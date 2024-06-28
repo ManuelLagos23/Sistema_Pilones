@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pilones</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+        
+        <link rel="stylesheet" href="resources/css/_turning_wetting_tasks.css">
+        
+
+
+
+</head>
+
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+        <%- include('../partials/modals/_modal_pilones') %>
+            <%- include('../partials/modals/_modal_workers') %>
+                <%- include('../partials/modals/_modal_turning_wetting_graphics') %>
+                <%- include('../partials/modals/_modal_variedad') %>
+                <%- include('../partials/modals/_modal_corte') %>
+                <%- include('../partials/modals/_modal_clase') %>
+                <%- include('../partials/modals/_modal_finca') %>
+                <%- include('../partials/modals/_modal_etapa') %>
+                <%- include('../partials/modals/_modal_tipo') %>
+                <%- include('../partials/modals/_modal_proceso') %>
+                
+                <%- include('../partials/modals/_modal_correo') %>
+                <%- include('../partials/modals/_modal_login_correo') %>
+                <%- include('../partials/modals/_modal_informacion_login') %>
+
+                    <div  class="mt-2 toggle-div"> 
+                        <label for="">Mostrar/Ocultar columnas:</label>
+                       <a  class="toggle-vis" data-column="0">Pilón</a>&nbsp;
+                        <a  class="toggle-vis" data-column="1">Variedad</a>&nbsp;
+                        <a  class="toggle-vis" data-column="2">Corte</a>&nbsp;
+                        <a class="toggle-vis" data-column="3">Fuente</a>&nbsp;
+                        <a class="toggle-vis" data-column="4">Etapa</a>&nbsp;
+                        <a class="toggle-vis" data-column="5">Peso neto</a>&nbsp;
+                        <a class="toggle-vis" data-column="6">Temperatura mínima</a>&nbsp;
+                        <a class="toggle-vis" data-column="7">Temperatura máxima</a>&nbsp;
+                        
+                        <a class="toggle-vis" data-column="8">Estado</a>&nbsp;
+                        <a class="toggle-vis" data-column="9">Proceso</a>&nbsp;
+                        
+                        <a  class="toggle-vis" data-column="10">Fecha empilonado</a>&nbsp;
+                  
+                    </div>
+
+                    <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+                        <div class="table-responsive small justify-content-sm-center">
+                            <table id="myTablePilones" class="display table table-striped table-sm table-bordered">
+                                <thead class="table-success">
+                                    <tr>
+                                        <th style="text-align: center;"   scope="col">Pilón</th>
+                                        <th style="text-align: center;"   scope="col">Variedad</th>
+                                        <th style="text-align: center;"   scope="col">Corte</th>
+                                        <th style="text-align: center;"   scope="col">Fuente</th>
+                                        <th style="text-align: center;"    scope="col">Etapa</th>
+                                        <th style="text-align: center;"  scope="col">Peso neto</th>
+                                        <th style="text-align: center;"   scope="col">Temperatura mínima</th>
+                                        <th style="text-align: center;"   scope="col">Temperatura máxima</th>
+                                      
+                                        <th style="text-align: center;"   scope="col">Estado</th>
+                                        <th style="text-align: center;"   scope="col">Proceso</th>
+                                        <th style="text-align: center;"   scope="col">Fecha de empilonado</th>
+                                        <th style="text-align: center;"   scope="col">Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pilonList">
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                    </main>
+
+                    <!-- SCRIPTS -->
+                    <script src="/resources/js/_pilones_scripts.js"></script>
+                    <script src="/resources/js/_turning_wetting_scripts_3.js"></script>
+                
+                
+                    
+                
+            
+        
+     
+            <script src="/resources/js/_correo_scripts.js"></script>
+            <script src="/resources/js/_login_correo_scripts.js"></script>
+       
+</body>
+
+</html>

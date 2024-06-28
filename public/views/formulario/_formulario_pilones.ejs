@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title >Formulario de pilón</title>
+
+
+    <%- include('../partials/cdn_head/_cdn_head') %>
+
+
+    <link rel="stylesheet" href="/resources/css/styles.css">
+
+    <style>
+
+
+        h1 {
+          font-family: 'Arial', sans-serif;
+          font-size: 2.0em;
+          color: #333;
+          text-align: center;
+          text-transform: uppercase;
+          letter-spacing: 4px;
+          background-color: #f2f2f2;
+          padding: 20px;
+          border: 2px solid #333;
+          border-radius: 10px;
+        }
+
+
+
+        
+      </style>
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+
+
+    <%- include('../partials/modals/_modal_correo') %>
+    <%- include('../partials/modals/_modal_login_correo') %>
+    <%- include('../partials/modals/_modal_informacion_login') %>
+    <%- include('../partials/modals/_modal_variedad') %>
+    <%- include('../partials/modals/_modal_corte') %>
+    <%- include('../partials/modals/_modal_clase') %>
+    <%- include('../partials/modals/_modal_finca') %>
+    <%- include('../partials/modals/_modal_etapa') %>
+    <%- include('../partials/modals/_modal_tipo') %>
+    <%- include('../partials/modals/_modal_proceso') %>
+    
+  
+   
+    <h1  style="background: #ad89a4; border-radius: 5px;" >Agregar nuevo pilón</h1> <br> 
+    
+
+     
+        <form id="createPilonForm"  >
+            
+            <div class="container" >
+                <div class="left-div" >
+   
+            <div class="row mb-3">
+
+          
+          
+                <label id="pilonmodalname" for="editNombre" class="col-sm-3 col-form-label form-label0">Nombre del pilón</label>
+                <div class="col-sm-9">
+                    <input style="text-align: center;"  type="text" id="nombre" name="nombre" class="form-control"
+                        placeholder="Example: Pilon 01" required autofocus> 
+                </div>
+            </div>
+
+
+     
+
+            <div class="row mb-3">
+                <label id="pilonmodalfinca" for="editVariedad" class="col-sm-3 col-form-label form-label0">Tabaco finca</label>
+                <div class="col-sm-9">
+                    <select class="form-control" style="text-align: center; width: 70%; " id="finca"
+                    name="finca" required> 
+                    <option id="finc" selected disabled readonly>Seleccione la finca</option>
+                </select>
+                    
+                </div>
+            
+            </div>
+            <br>
+
+
+
+            <div class="row mb-3">
+                <label id="pilonmodalvariety" for="editVariedad" class="col-sm-3 col-form-label form-label0">Tabaco variedad</label>
+                <div class="col-sm-9">
+                    <select class="form-control" style="text-align: center;  width: 70%;" id="variedad"
+                    name="variedad" required>
+                    <option id="variety" selected disabled readonly>Seleccione la variedad</option>
+                </select> 
+                    
+                </div>
+                
+            </div>
+
+
+
+            <div class="row mb-3">
+                <label id="pilonmodalcorte" for="editVariedad" class="col-sm-3 col-form-label form-label0">Tabaco corte</label>
+                <div class="col-sm-9">
+                    <select class="form-control" style="text-align: center;  width: 70%;" id="corte"
+                    name="corte" required>
+                    <option id="seleccioneCorte" selected disabled readonly>Seleccione el corte</option>
+                </select> 
+                    
+                </div>
+            
+            </div>
+
+            <br>
+
+
+
+            <div class="row mb-3">
+                <label id="pilonmodalclase" for="editVariedad" class="col-sm-3 col-form-label form-label0">Tabaco clase</label>
+                <div class="col-sm-9">
+                    <select class="form-control" style="text-align: center;  width: 70%;" id="clase"
+                    name="clase" required>
+                    <option id="seleccioneClase" selected disabled readonly>Seleccione la clase</option>
+                </select> 
+                    
+                </div>
+                       </div>
+
+                       <br>
+
+
+            <div class="row mb-3">
+                <label id="pilonmodalharvest" for="editCosecha" class="col-sm-3 col-form-label form-label0">Cosecha de tabaco</label>
+                <div class="col-sm-9">
+                    <input type="text" style="text-align: center;  width: 70%;" id="cosecha" maxlength="9" name="cosecha" class="form-control"
+                        placeholder="Example: 2022-2023" required> 
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label id="pilonmodalharvest" for="editCosecha" class="col-sm-3 col-form-label form-label0">Fecha de empilonado</label>
+                <div class="col-sm-9">
+                    <input type="date" style="text-align: center;  width: 70%;" id="empilonado" maxlength="9" name="empilonado" class="form-control"
+                         required>  
+                </div>
+            </div>
+        
+
+
+</div>
+
+ <div class="right-div">
+            <div class="row mb-3">
+                <label id="pilonmodaletapa" for="editVariedad" class="col-sm-3 col-form-label form-label0">Etapa del tabaco</label>
+                <div class="col-sm-9">
+                    <select class="form-control" style="text-align: center;  width: 70%;" id="etapa"
+                    name="etapa" required>
+                    <option id="eta" selected disabled readonly>Seleccione la etapa</option>
+                </select>
+                    
+                </div>
+            
+            </div>
+        
+  
+
+            <div class="row mb-3">
+                <label id="pilonmodaltipo" for="editVariedad" class="col-sm-3 col-form-label form-label0">Tipo del tabaco</label>
+                <div class="col-sm-9">
+                    <select class="form-control" style="text-align: center;  width: 70%;" id="tipo_tabaco"
+                    name="tipo_tabaco" required>
+                    <option id="selectType" selected disabled readonly>Seleccione el tipo</option>
+                </select>
+                    
+                </div>
+            
+            </div>
+
+
+            <div class="row mb-3">
+                <label id="pilonmodalweight" for="editPN" class="col-sm-3 col-form-label form-label0">Tobacco net weight</label>
+                <div class="col-sm-9">
+                    <input type="number" style="text-align: center;" id="pn" name="pn" class="form-control" 
+                    placeholder="Ejemplo: 9800.00"
+                        required step="0.01">
+                </div>
+           </div>
+       
+       
+            <div class="row mb-3">
+                <label  id="pilonmodalminimumnuevo" for="editTempMin"  class="col-sm-3 col-form-label form-label0">Minimum
+                    temp</label>
+                <div class="col-sm-9">
+                    <input type="number" style="text-align: center;  width: 70%;  " id="temp_min" name="temp_min" class="form-control"
+                        placeholder="Ejemplo: 90" required>
+                </div>
+            </div>
+
+        
+            <div class="row mb-3">
+                <label id="pilonmodalmaximumnuevo" for="editTempMax" class="col-sm-3 col-form-label form-label0">Maximum temp</label>
+                <div class="col-sm-9">
+                    <input type="number" style="text-align: center;  width: 70%;" id="temp_max" name="temp_max" class="form-control"
+                        placeholder="Ejemplo: 95" required> 
+                </div>
+            </div>
+         
+
+
+          
+            <div class="row mb-3">
+                <label id="pilonmodalstate" for="editEstado" class="col-sm-3 col-form-label form-label0">Pilón's state</label>
+                <div class="col-sm-9">
+                    <input style="text-align: center;  width: 70%;" type="text" id="estado" name="estado" class="form-control" placeholder="Estado"
+                        value="En proceso" readonly required>  
+                </div>
+            </div>
+
+
+       
+
+            <div class="row mb-3">
+                <label id="pilonmodaltipo" for="editVariedad" class="col-sm-3 col-form-label form-label0">Proceso del tabaco</label>
+                <div class="col-sm-9">
+                    <select class="form-control" style="text-align: center;  width: 70%;" id="proceso_pilon"
+                    name="proceso_pilon" required>
+                    <option   selected  disabled readonly>Seleccione el proceso</option>
+                    
+                </select>
+                    
+                </div>
+            
+            </div>
+
+
+          
+
+
+        </div>
+            <button id="createPilonButton"  class="btn btn-primary" data-botom-id = "botonid" style="background: #00a09d; border: 0px; text-align: center;"
+            type="submit">Guardar nuevo pilón</button> 
+    </form>
+
+  
+
+
+    </div>
+
+                
+
+
+    <script src="/resources/js/_correo_scripts.js"></script>
+    <script src="/resources/js/_login_correo_scripts.js"></script>
+
+        <script src="/resources/js/_pilones_scripts.js"></script>
+        <script src="/resources/js/_turning_wetting_scripts_3.js"></script>
+     <script src="/resources/js/_variedad_scripts.js"></script>
+     <script src="/resources/js/_corte_scripts.js"></script>
+     <script src="/resources/js/_clase_scripts.js"></script>
+     <script src="/resources/js/_finca_scripts.js"></script>
+     <script src="/resources/js/_etapa_scripts.js"></script>
+     <script src="/resources/js/_tipo_scripts.js"></script>
+     <script src="/resources/js/_proceso_scripts.js"></script>
+ 
+        <script src="/resources/js/language/_language_change.js" ></script>   
+        <script src="/resources/js/language/_language_save.js"></script> 
+        <script src="/resources/js/language/_language_formulario.js"></script> 
+        
+      <script ></script>
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successFormularioModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El pilón se creó correctamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+        <!-- ERROR MODAL -->
+<div class="modal fade" id="errorformularioModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>No se pudo crear el pilón, verifique los datos y vuelva a intentarlo.</p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+ 
+
+
+        
+   
+
+
+
+
+</body>
+</html>

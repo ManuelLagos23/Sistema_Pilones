@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Reportes</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+
+  
+</head>
+
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+        <%- include('../partials/modals/_modal_pilones') %>
+        <%- include('../partials/modals/_modal_variedad') %>
+        <%- include('../partials/modals/_modal_corte') %>
+        <%- include('../partials/modals/_modal_clase') %>
+        <%- include('../partials/modals/_modal_finca') %>
+        <%- include('../partials/modals/_modal_etapa') %>
+        <%- include('../partials/modals/_modal_tipo') %>
+        <%- include('../partials/modals/_modal_proceso') %>
+        <%- include('../partials/modals/_modal_correo') %>
+        <%- include('../partials/modals/_modal_login_correo') %>
+        <%- include('../partials/modals/_modal_informacion_login') %>
+
+                    <div  class="mt-2 toggle-div"> <label  for="">Mostrar/Ocultar columnas: </label>
+                        <a  class="toggle-vis" data-column="0">Pilón</a>&nbsp;
+                       <a class="toggle-vis" data-column="1">Último virado</a>&nbsp;
+                        <a  class="toggle-vis" data-column="2">Último mojado</a>&nbsp;
+                        <a  class="toggle-vis" data-column="3">Total virado</a>&nbsp;
+                        <a  class="toggle-vis" data-column="4">Total mojado</a>&nbsp;
+                        
+                        <a  class="toggle-vis" data-column="5">Frecuencia virado</a>&nbsp;
+                        <a  class="toggle-vis" data-column="6">Frecuencia mojado</a>&nbsp;
+                      
+                  
+                    </div>
+
+                    <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+                        <div class="table-responsive small justify-content-sm-center">
+                            <table id="myTableReporte" style="width: 100%;" class="display table table-striped table-sm table-bordered">
+                                <thead class="table-success">
+                                    <tr>
+                                        <th style="text-align: center;"  id="pilon_reporte" scope="col">Pilón</th>
+                                        <th style="text-align: center;"  id="ultimo_virado" scope="col">Último virado</th>
+                                        <th style="text-align: center;"  id="ultimo_mojado" scope="col">Último mojado</th>
+                                        <th style="text-align: center;"  id="total_virado" scope="col">Total virado</th>
+                                        <th style="text-align: center;"  id="total_mojado"  scope="col">Total mojado</th>
+                                        
+                                        <th style="text-align: center;"  id="frecuencia_virado" scope="col">Frecuencia virado por días</th>
+                                        <th style="text-align: center;"  id="frecuencia_mojado" scope="col">Frecuencia mojado por días</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody id="reporteList">
+                           
+                                </tbody>
+                            </table>
+                        </div>
+                    </main>
+
+                
+
+
+                    <script src="/resources/js/_reportes_scripts.js"></script>
+
+                 
+        
+            <script src="/resources/js/_correo_scripts.js"></script>
+            <script src="/resources/js/_login_correo_scripts.js"></script>
+</body>
+
+</html>

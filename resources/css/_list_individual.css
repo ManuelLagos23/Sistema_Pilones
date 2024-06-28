@@ -1,0 +1,34 @@
+* {
+    outline: 0;
+    font-family: sans-serif;
+}
+
+span.msg,
+span.choose {
+    color: #555;
+    padding: 5px 0 10px;
+    display: inherit;
+}
+
+.checkbox-list {
+    overflow-y: auto;
+    height: 600px;
+    width: 100%;
+}
+
+.checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.checkbox-list label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    transform: scale(2.09);
+    clip-path: circle(46% at 50% 50%);
+}

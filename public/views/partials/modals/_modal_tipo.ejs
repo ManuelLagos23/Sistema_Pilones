@@ -1,0 +1,162 @@
+
+<style>
+
+    input{
+        text-align: center;
+    }
+</style>
+
+
+<!-- CREATE MODAL -->
+<div class="modal fade" id="createTipoModal" tabindex="-1" aria-labelledby="createWorkerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="createTipoModal"><i
+                        class="bi bi-box-arrow-down"></i> <p id="titleworker"  style="display: inline;"> Agregar nueva tipo</p></h5>
+            </div>
+            <div class="modal-body">
+                <form id="createTipoForm">
+                    <div  class="row mb-3">
+
+
+                        <label id="modalworkername" for="nombre" class="col-sm-3 col-form-label form-label0">Código del tipo:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="codigo_tipo" name="nombre_tipo" class="form-control"
+                                placeholder="Ejemplo: Tipo" required><br>
+                        </div>
+
+                        <label id="modalworkername" for="nombre" class="col-sm-3 col-form-label form-label0">Tipo de tabaco:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre_tipo" name="nombre_tipo" class="form-control"
+                                placeholder="Ejemplo: Camacho" required><br>
+                        </div>
+
+                        
+                         
+                    <label id="modalworkername" for="nombre" class="col-sm-3 col-form-label form-label0">Descripción del tipo:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="descripcion_tipo" name="nombre_tipo" class="form-control"
+                            placeholder="Ejemplo: Describa el tipo de tabaco" required><br>
+                    </div>
+                    </div>
+                    <hr>
+
+                    <button id="createVariedadButton" class="btn btn-success" style="background: #00a09d"
+                        type="submit">Guardar nuevo tipo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="successTipoModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El tipo se creó correctamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editTipoModal" tabindex="-1" aria-labelledby="editTipoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="editWorkerModal"><i
+                        class="bi bi-pencil-square just"></i> Actualizar Tipo</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editTipoForm">
+                    <input type="hidden" id="tipoId" name="tipoId">
+
+                    <div class="row mb-3">
+                        <label for="editCodigo" class="col-sm-3 col-form-label form-label0">Código del tabaco</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editCodigo" name="editCodigo" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editTipo" class="col-sm-3 col-form-label form-label0">Tipo de tabaco</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editTipo" name="editTipo" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editDescripcion" class="col-sm-3 col-form-label form-label0">Descripción del tipo:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editDescripcion" name="editDescripcion" class="form-control" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <button id="updateTipoButton" class="btn btn-primary"
+                    style="background: #00a09d" type="submit">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- SUCCESS MODAL UPDATE -->
+<div class="modal fade" id="successTipoModalUpdate" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El tipo se actualizó exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deleteTipoModal" tabindex="-1" aria-labelledby="deleteTipoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #890d0d, #890d0dc0, #c90000c0);"">
+                <h5 class=" modal-title" style="color: #ffffff;" id="deleteTipoModal"><i class="bi bi-trash3"></i>
+                Eliminar</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>¿Está seguro que quiere borrar el tipo?</strong>
+          
+                <br><button id="deleteTipoButton" class="btn btn-primary"
+                    style="background-color: #c90000c0;  border: 0px;" type="button"
+                    onclick="deleteTipo()">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>

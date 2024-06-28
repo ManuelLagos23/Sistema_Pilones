@@ -1,0 +1,392 @@
+<nav class="navbar navbar-expand-lg p-3" style="background: #875A7B; border-radius: 5px; width: 126%; ">
+    <div class="container">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="home" data-lang="home" class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/individual_arduino" id="individual_arduino">
+                        Individual
+                    </a>
+                </li>
+                <li class="nav-item">
+                         
+                     
+                        <div class="mt-2">
+                            <div class="dropdown">
+                                <a  href="#" id="sensOr" class="dropdown-toggle dropdown-toggle-navbar"
+                                    data-bs-toggle="dropdown"> Sensores</a>         
+                                <div class="dropdown-menu" style="padding: 5px; border-radius: 20px;">
+
+                                    <a href="/arduino_list"  class="dropdown-item"   style="text-decoration: none;" >
+                                        <button   class="nav-link px-2 " style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                        data-bs-toggle="modal"><i
+                                            class="bi bi-patch-plus"  ></i> <p id="listaArduinos" style="display: inline;">  Lista de sensores </p>
+                                    </button>
+                                    </a>
+    
+
+        
+        
+                        </div>
+                    </div>
+
+
+<style>
+
+
+</style>
+
+</div>
+
+                   
+                </li>
+                &nbsp;&nbsp;
+                <li  >
+                    <div class="mt-2 ">
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-navbar"
+                                data-bs-toggle="dropdown">Pilones</a>
+                            <div class="dropdown-menu" style="padding: 8px; border-radius: 20px;">
+                            
+
+                             <a href="/pilones_list" class="dropdown-item"   style="text-decoration: none;" >
+                                    <button   class="nav-link px-2 "  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                    data-bs-toggle="modal"><i
+                                        class="bi bi-patch-plus"  ></i> <p id="listapilones" style="display: inline;">  Pilones list </p>
+                                </button>
+                                </a>
+
+
+                             <a   href="/tasks_list" class="dropdown-item"   id="tasks_list" style="text-decoration: none; width: 100%;">
+                                <button   class="nav-link px-2"  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                data-bs-toggle="modal"><i
+                                    class="bi bi-patch-plus"  ></i> <p id="taskslist" style="display: inline;">   Pilones tasks</p>
+                            </button>
+                            </a>
+
+
+                            <a    href="/worker_list" class="dropdown-item"   id="worker_list"  style="text-decoration: none;">
+                                <button   class="nav-link px-2" style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                data-bs-toggle="modal"><i
+                                    class="bi bi-patch-plus"  ></i> <p id="workerlist" style="display: inline;">  Pilones workers </p>
+                            </button>
+                            </a>
+
+                              
+
+                            <a     href="/crear_pilones"  class="dropdown-item"    id="create_pilones"  style="text-decoration: none; ">
+                                <button   class="nav-link px-2" style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                data-bs-toggle="modal"><i
+                                    class="bi bi-patch-plus"  ></i> <p style="display: inline;" id="formularioPilon"> Agregar nuevo pilón  </p>
+                            </button>
+                            </a>
+
+                              
+               
+                              
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                &nbsp;&nbsp;
+       
+                <li>
+                    <div class="mt-2">
+                        <div class="dropdown">
+                            <a id="temphumi" data-lang="temphumi" href="#" class="dropdown-toggle dropdown-toggle-navbar"
+                                data-bs-toggle="dropdown">Temperature & humidity</a>
+                            <div class="dropdown-menu" style="padding: 8px; border-radius: 20px;">
+
+
+                            <a    href="/temp_history"  class="dropdown-item"   id="temp_history"  style="text-decoration: none;">
+                                <button   class="nav-link px-2" style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                data-bs-toggle="modal"><i
+                                    class="bi bi-patch-plus"  ></i> <p  id="temphistory"  style="display: inline;">  Temperature & humidity history  </p>
+                            </button>
+                            </a>
+
+                              
+
+
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                &nbsp;&nbsp;
+        
+   
+       
+                <li class="nav-item">
+                    <div class="mt-2">
+                        <div class="dropdown">
+                            <a id="grafi" data-lang="grafi" href="#" class="dropdown-toggle dropdown-toggle-navbar"
+                                data-bs-toggle="dropdown">Graphics</a>                     
+                            <div class="dropdown-menu" style="padding: 8px; border-radius: 20px;">
+
+
+
+                                <a   href="/temperature_graphics_history" id="temp_graphics_history" class="dropdown-item"   style="text-decoration: none;" >
+                                    <button   class="nav-link px-2 "  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                    data-bs-toggle="modal"><i
+                                        class="bi bi-patch-plus"  ></i> <p id="tempgraphicshistory" style="display: inline;">  Temperature
+                                            graphics </p>
+                                </button>
+                                </a>
+                                
+
+                                <a     href="/humidity_graphics_history"      id="hum_graphics_history" class="dropdown-item"   style="text-decoration: none;" >
+                                    <button   class="nav-link px-2 "  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                    data-bs-toggle="modal"><i
+                                        class="bi bi-patch-plus"  ></i> <p id="humgraphicshistory"  style="display: inline;">  Humidity
+                                            graphics </p>
+                                </button>
+                                </a>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- If ? view show some things 
+                    
+                    -->
+
+
+                 
+              
+           
+
+          
+                    <% if (currentUrl==='/pilones_list' || currentUrl=='/crear_pilones'  ) { %>
+                     
+                        <li class="nav-item">
+                         
+                            
+                        <div class="mt-2">
+                            <div class="dropdown">
+                                &nbsp;      &nbsp;
+                
+            
+                                <a  href="/variedad_list"  class="dropdown-toggle dropdown-toggle-navbar"
+                                    data-bs-toggle="dropdown">Configuraciones</a>         
+                                <div class="dropdown-menu  " style="padding: 5px; border-radius: 20px;">
+                                    
+                                    <button  type="button" class="nav-link px-2" style="color: #000000; width: 100%;  text-align: left;"
+                                    data-bs-toggle="modal" data-bs-target="#createVariedadModal"><i
+                                        class="bi bi-patch-plus"  ></i> Variedad
+                                </button>
+                                    
+                                    
+                                <button  type="button" class="nav-link px-2" style="color: #000000; width: 100%;  text-align: left;"
+                                data-bs-toggle="modal" data-bs-target="#createCorteModal"><i
+                                    class="bi bi-patch-plus"  ></i> Corte
+                            </button>
+
+                            <button  type="button" class="nav-link px-2" style="color: #000000; width: 100%;  text-align: left;"
+                            data-bs-toggle="modal" data-bs-target="#createClaseModal"><i
+                                class="bi bi-patch-plus"  ></i> Clase
+                        </button>
+
+
+                        <button  type="button" class="nav-link px-2" style="color: #000000; width: 100%;  text-align: left;"
+                        data-bs-toggle="modal" data-bs-target="#createFincaModal"><i
+                            class="bi bi-patch-plus"  ></i> Finca
+                    </button>
+
+                    <button  type="button" class="nav-link px-2" style="color: #000000; width: 100%;  text-align: left;"
+                    data-bs-toggle="modal" data-bs-target="#createEtapaModal"><i
+                        class="bi bi-patch-plus"  ></i> Etapa
+                </button>
+
+
+  
+                <button  type="button" class="nav-link px-2" style="color: #000000;width: 100%;  text-align: left;"
+                data-bs-toggle="modal" data-bs-target="#createTipoModal"><i
+                    class="bi bi-patch-plus"  ></i> Tipo
+            </button>
+
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                        <% } %>
+
+                            <% if (currentUrl==='/arduino_list'  || currentUrl=='/sensores_list'  ) { %>
+                                <li class="nav-item">
+                                    <a>
+                                        <button type="button" class="nav-link px-2" style="color: #87ff8d;"
+                                            data-bs-toggle="modal" data-bs-target="#createArduinoModal"><i
+                                              ></i> <label id="addarduino" for=""> <p id="addnewarduino"   class="bi bi-patch-plus" style="display: inline; " > Add new sensor </p></label> </button>
+
+                                                
+                                                
+                                    </a>
+                                </li>
+
+                         
+
+
+                                <% } %>
+
+
+            
+
+        
+
+                                    <% if (currentUrl=='/' ) { %>
+                                        <li class="nav-item">
+                                            <a  type="button" id="openFilterModal" class="nav-link px-2"
+                                                title="Filters and options to sort the pilones the way the user wants them to be displayed."
+                                                style="color: #87e7ff;">
+                                                <iclass="bi bi-funnel"></i> Filters
+                                            </a>
+                                        </li>
+                                        <% } %>
+
+
+                                            <% if (currentUrl=='/worker_list' ) { %>
+                                                <li class="nav-item">
+                                                    <a>
+                                                        <button type="button" class="nav-link px-2"
+                                                        style="color: #87ff8d;"data-bs-toggle="modal"
+                                                            data-bs-target="#createWorkerModal"><i
+                                                                class="bi bi-patch-plus"></i> Add new worker
+                                                        </button>
+                                                    </a>
+                                                </li>
+                                                <% } %>
+
+
+    
+                                                <li>
+                                                    <div class="mt-2">
+                                                        <div class="dropdown">
+                                                            <a id="moreoptions" href="#" class="dropdown-toggle dropdown-toggle-navbar" style="margin-left: 15px;"
+                                                                data-bs-toggle="dropdown">More
+                                                                options ...</a>        &nbsp;
+                                                            <div class="dropdown-menu" style="padding: 8px; border-radius: 20px;">
+                                                             
+                                
+                                                             <a href="/not_implement_yet" class="dropdown-item"   style="text-decoration: none;" >
+                                                                <button   class="nav-link px-2 "  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                                                data-bs-toggle="modal"><i
+                                                                    class="bi bi-patch-plus"  ></i> <p  style="display: inline;">  Sync
+                                                                        data </p>
+                                                            </button>
+                                                            </a>
+                                
+                                                            
+                                
+                                
+                                                             <a href="/language_change" class="dropdown-item"   style="text-decoration: none;" >
+                                                                <button   class="nav-link px-2 "  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                                                data-bs-toggle="modal"><i
+                                                                    class="bi bi-patch-plus"  ></i> <p id="language"  style="display: inline;"> Language </p>
+                                                            </button>
+                                                            </a>
+
+
+
+                                                         
+                                                            <a href="/alerta_temperatura" class="dropdown-item"   style="text-decoration: none;" >
+                                                                <button   class="nav-link px-2 "  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                                                data-bs-toggle="modal"><i
+                                                                    class="bi bi-patch-plus"  ></i> <p id="language"  style="display: inline;">Notificaciones</p>
+                                                            </button>
+                                                            </a>
+
+                                                       
+
+
+                                                            <a href="/respaldo_datos" class="dropdown-item"   style="text-decoration: none;" >
+                                                                <button   class="nav-link px-2 "  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                                                data-bs-toggle="modal"><i
+                                                                    class="bi bi-patch-plus"  ></i> <p id="language"  style="display: inline;">Copia de datos</p>
+                                                            </button>
+                                                            </a>
+                                
+                                
+                                                            <a href="/enviar_datos" class="dropdown-item"   style="text-decoration: none;" >
+                                                                <button   class="nav-link px-2 "  style=" color: #000000; width: 100%;  text-align: left;" onmouseover="this.style.backgroundColor='#266293';" onmouseout="this.style.backgroundColor='initial';" 
+                                                                data-bs-toggle="modal"><i
+                                                                    class="bi bi-patch-plus"  ></i> <p id="language"  style="display: inline;">Enviar datos</p>
+                                                            </button>
+                                                            </a>
+                                
+                                
+                                
+                                                          
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                
+
+
+
+                                                <% if (currentUrl=='/alerta_temperatura' ) { %>
+
+
+                                         
+                                <li class="nav-item">
+                                    <a>
+                                        <button id="addnewcorreo" type="button" class="nav-link px-2 dropdown-item"  style="color: #87ff8d;"
+                                            data-bs-toggle="modal" data-bs-target="#createCorreoModal"><i
+                                               ></i> <label  class="bi bi-patch-plus" id="addsensor" for=""> Nuevo correo</label> </button>
+
+                                                
+                                                
+                                    </a>
+                                </li>
+
+
+
+                                                <% } %>
+
+
+
+                                                    <li class="nav-item">
+                                                        <a id="system" data-lang="system" class="nav-link px-2"
+                                                            style="color: #ffffff47; font-weight: 900;">
+                                                            <i class="bi bi-hdd-rack-fill"></i> SERVER SYSTEM
+                                                        </a>
+                                                    </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Script to disable context menu -->
+<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+
+
+
+
+<!-- Script to add bold style to currentUrl nav-item -->
+<script>
+    var currentUrl = window.location.pathname;
+    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    navLinks.forEach(function (link) {
+        if (link.getAttribute('href') === currentUrl) {
+            link.style.fontWeight = 'bold';
+            link.style.color = 'white';
+        }
+    });
+    
+</script>
+
+
+

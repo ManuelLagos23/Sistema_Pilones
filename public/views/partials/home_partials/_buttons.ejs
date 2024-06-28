@@ -1,0 +1,55 @@
+
+<div style="margin-top: 0.5%;"> 
+<button id="saveTemps"  > Guardar temperatura</button>
+
+
+<button id="saveAllTemps" style="margin-left: 1%;"   >Guardar todas las temperaturas</button>
+
+
+<button style="background-color: #00a09d ; margin-left:  1%; " class="options" id="options" data-toggle="modal" data-target="#turningWettingModal">Tareas de virado / mojado</button>
+
+
+   <button style=" background-color: #00a09d; margin-left: 1%;" id="optionsinfo" class=" options"
+       data-bs-toggle="modal" data-bs-target="#informacionModal">Ver información</button>  
+
+
+    <style>
+
+
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #00a09d;
+            color: #fff;
+            width: 5%;
+            cursor: pointer;
+        }
+
+        select:hover {
+            border-color: #555;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #00f;
+            box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+        }
+
+    </style>
+ 
+
+       <label style="margin-left: 3%; font-weight: bold; text-transform: uppercase;letter-spacing: 1px;  font-size: 18px;   color: #333;" id="saveautomatic" for="intervalSelect">Guardar automáticamente cada: </label> &nbsp;
+       <select id="intervalSelect" >
+        
+  
+   
+           <!-- Opciones del 1 al 60 generadas dinámicamente con JavaScript -->
+       </select> &nbsp;
+       <label id="savehours" for="intervalSelect">horas. </label> &nbsp;
+<script src="/resources/js/language/_language_change.js"></script>
+   <script src="/resources/js/language/_language_home.js" ></script>  
+
+</div>

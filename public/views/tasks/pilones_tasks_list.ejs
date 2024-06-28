@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title >Tareas de pilones</title>
+        <%- include('../partials/cdn_head/_cdn_head') %>
+        <link rel="stylesheet" href="resources/css/_create_modal_pilones.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.css">
+        <link rel="stylesheet" href="resources/css/_buttons_home.css">
+        <link rel="stylesheet" href="resources/css/_cards_home.css">
+        <link rel="stylesheet" href="resources/css/_cards_pagination_home.css">
+
+
+
+
+
+
+
+     
+    </head>
+
+    <body>
+        <%- include('../partials/navbar/_navbar') %>
+        <%- include('../partials/modals/_modal_turning_wetting') %>
+        <%- include('../partials/modals/_modal_login_correo') %>
+        <%- include('../partials/modals/_modal_variedad') %>
+        <%- include('../partials/modals/_modal_corte') %>
+        <%- include('../partials/modals/_modal_clase') %>
+        <%- include('../partials/modals/_modal_finca') %>
+        <%- include('../partials/modals/_modal_etapa') %>
+        <%- include('../partials/modals/_modal_tipo') %>
+        <%- include('../partials/modals/_modal_proceso') %>
+        <%- include('../partials/modals/_modal_workers') %>
+        <link rel="stylesheet" href="resources/css/_turning_wetting_tasks.css">
+
+
+
+
+
+
+
+
+         <div  class="mt-2 toggle-div">
+            <label  for="">Mostrar/Ocultar columnas: </label>
+            <a class="toggle-vis" data-column="0">Nº orden</a>&nbsp;
+            <a  class="toggle-vis" data-column="1">Personas encargadas</a>&nbsp;
+           
+            <a class="toggle-vis" data-column="2">Tarea de pilón</a>&nbsp;
+            <a class="toggle-vis" data-column="3">Pilón</a>&nbsp;
+            <a  class="toggle-vis" data-column="4">Temperatura de inicio</a>&nbsp;
+            <a class="toggle-vis" data-column="5">Fecha de inicio</a>&nbsp;
+            <a class="toggle-vis" data-column="6">Hora de inicio</a>&nbsp;
+            <a class="toggle-vis" data-column="7">Fecha de finalizar</a>&nbsp;
+            <a  class="toggle-vis" data-column="8">Hora de finalizar</a>&nbsp;
+            <a class="toggle-vis" data-column="9">Opciones</a>&nbsp;
+        </div>
+
+
+        <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+            <div class="table-responsive small justify-content-sm-center">
+                <table id="turningTable" class="display table table-striped table-sm table-bordered">
+                    <thead class="table-success">
+                        <tr>
+                            <th style="text-align: center;"   scope="col">Nº orden</th>
+                            <th style="text-align: center;"   scope="col">Personas encargadas</th>
+                   
+                            <th style="text-align: center;"   scope="col">Tarea de pilón</th>
+                            <th style="text-align: center;"   scope="col">Pilón </th>
+                            <th style="text-align: center;"   scope="col">Temperatura de inicio</th>
+                            <th style="text-align: center;"   scope="col">Fecha de inicio</th>
+                            <th style="text-align: center;"   scope="col">Hora de inicio</th>
+                            <th style="text-align: center;"   scope="col">Fecha de finalización</th>
+                            <th style="text-align: center;"   scope="col">Hora de finalización</th>
+                           
+                            <th style="text-align: center;"   scope="col">Opciones</th>
+
+
+
+
+
+
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="tasksList">
+                        <!-- Records will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        
+
+        <script src="/resources/js/_turning_wetting_scripts_1.js"></script>
+        <script src="/resources/js/_turning_wetting_scripts_2.js"></script>
+        <script src="/resources/js/language/_language_change.js"></script>
+ 
+       <script src="/resources/js/language/_language_task_pilones.js"></script>
+       <script  src="/resources/js/_worker_scripts.js"></script>
+   
+    </body>
+</html>

@@ -1,0 +1,823 @@
+<!-- CREATION MODAL -->
+
+
+
+<div class="modal fade"  id="turningWettingModal" tabindex="-1" aria-labelledby="turningWettingModalLabel" 
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 70%;">
+        <div class="modal-content">
+            <div class="modal-header"  style="background: #875a7b; border-radius: 5px; ">
+                <h5 class="modal-title" style="color: #ffffff;" id="turningWettingModal"><i class="bi bi-tools"></i>
+                   <p  style="display: inline;">  Tareas de virado / mojado </p></h5>
+                <a>
+                    <button  type="button" class="nav-link px-2"
+                        style="color: #FFFFFF;; background: #00a09d; padding: 4px; border-radius: 10px"
+                        data-bs-toggle="modal" data-bs-target="#createWorkerModal"><i ></i> Agregar nuevo empleado
+                    </button>
+                </a>
+            </div>
+            <div class="modal-body">
+                <form id="turning_wetting_Form">
+
+                    <div class="container">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group row align-items-center">
+                                    <label style="text-align: left; " for="task" class="col-sm-3 col-form-label">Tarea del pilón:</label>
+                                    <div class="col-sm-8">
+                                        <select style="text-align: center;" class="form-control" id="task" name="task" required>
+                                            <option id="turningselect" selected disabled readonly>Seleccione una opción</option>
+                                            <option value="Virado">Virado</option>
+                                            <option value="Mojado">Mojado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="id_orden" class="col-sm-3 col-form-label" style="text-align: left; ">Nº orden:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="id_orden" name="id_orden" class="form-control" readonly required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var orderOfWorkInput = document.getElementById("id_orden");
+        var saveButton = document.getElementById("saveTurningWettingButton");
+        var turningWettingForm = document.getElementById("turning_wetting_Form");
+        var selectTask = document.getElementById("task");
+
+        var lastTurningOrderNumber = parseInt(localStorage.getItem("lastTurningOrderNumber")) || 0;
+        var lastWettingOrderNumber = parseInt(localStorage.getItem("lastWettingOrderNumber")) || 0;
+
+        function updateOrderNumber() {
+            if (selectTask.value === "Virado") {
+                orderOfWorkInput.value = "Orden de virado " + (lastTurningOrderNumber + 1);
+            } else if (selectTask.value === "Mojado") {
+                orderOfWorkInput.value = "Orden de mojado " + (lastWettingOrderNumber + 1);
+            } else {
+                orderOfWorkInput.value = "";
+            }
+        }
+
+        saveButton.addEventListener("click", function () {
+            if (selectTask.value === "Virado" || selectTask.value === "Mojado") {
+                if (turningWettingForm.checkValidity()) {
+                    var newOrderNumber;
+
+                    if (selectTask.value === "Virado") {
+                        newOrderNumber = lastTurningOrderNumber + 1;
+                        localStorage.setItem("lastTurningOrderNumber", newOrderNumber);
+                    } else if (selectTask.value === "Mojado") {
+                        newOrderNumber = lastWettingOrderNumber + 1;
+                        localStorage.setItem("lastWettingOrderNumber", newOrderNumber);
+                    }
+
+                    updateOrderNumber(); 
+                } else {
+                  
+                }
+            } else {
+                orderOfWorkInput.value = "";
+            }
+        });
+
+    
+        selectTask.addEventListener("change", updateOrderNumber);
+    });
+</script>
+
+<br>
+<div class="row mb-4">
+    <label id="turningperson" style="text-align: left;" for="person_in_charge" class="col-sm-2 col-form-label form-label">Personal:</label>
+    <div class="col-sm-9">
+
+        
+            <input style="width: 80%;  text-align: center;" type="text" class="form-control" id="searchInput" placeholder="Buscar empleado">
+            <div style="display: flex; align-items: center;">
+                <select class="form-control" style="width: 80%; text-align: center;" id="person_in_charge" name="person_in_charge" required multiple>
+               
+                </select>
+                <div style="display: flex; flex-direction: column; align-items: center; ">
+                    <button id="addButton" class="btn btn-primary mb-2" style="background-color: rgba(255,255,255,0); border: none;" type="button">
+                        <img src="../../../../resources/images/plus.png" width="40" height="40" alt="Agregar empleado">
+                    </button>
+                    <button id="removeButton" class="btn btn-primary" style="background-color: rgba(255,255,255,0); border: none; " type="button">
+                        <img src="../../../../resources/images/menos.png" width="40" height="40" alt="Quitar empleado">
+                    </button>
+                </div>
+                
+            </div>
+            <br>
+            <label style="font-weight: bold;" >Seleccionados:</label> 
+            <div style="display: flex; flex-wrap: wrap;" id="selectedPersons"></div>
+          
+        
+
+    </div> 
+</div>
+
+
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const mySelect = document.getElementById('person_in_charge');
+
+    
+    searchInput.addEventListener('input', function () {
+        const searchTerm = searchInput.value.toLowerCase();
+        const options = mySelect.options;
+
+        for (let i = 0; i < options.length; i++) {
+            const option = options[i];
+            const text = option.textContent.toLowerCase();
+
+            if (text.includes(searchTerm)) {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectElement = document.getElementById('person_in_charge');
+        const personasSeleccionadasDiv = document.getElementById('selectedPersons');
+        const addButton = document.getElementById('addButton');
+        const removeButton = document.getElementById('removeButton');
+
+        let preSelectedEmployees = new Set();
+        let toBeRemovedEmployees = new Set();
+
+        selectElement.selectedIndex = -1; 
+        personasSeleccionadasDiv.textContent = '';
+
+        selectElement.addEventListener('click', function (event) {
+            const option = event.target;
+            if (option.tagName === 'OPTION') {
+                if (option.selected) {
+                    if (toBeRemovedEmployees.has(option.value)) {
+                        toBeRemovedEmployees.delete(option.value);
+                        option.classList.remove('remove-mode');
+                    } else {
+                        toBeRemovedEmployees.add(option.value);
+                        option.classList.add('remove-mode');
+                    }
+                } else {
+                    if (preSelectedEmployees.has(option.value)) {
+                        preSelectedEmployees.delete(option.value);
+                    } else {
+                        preSelectedEmployees.add(option.value);
+                    }
+                    option.selected = false; 
+                    updateOptionStyles();
+                }
+            }
+        });
+
+        addButton.addEventListener('click', function () {
+            if (preSelectedEmployees.size > 0) {
+                preSelectedEmployees.forEach(employee => {
+                    const optionExists = Array.from(selectElement.options).some(option => option.value === employee);
+                    if (optionExists) {
+                        const selectedOption = Array.from(selectElement.options).find(option => option.value === employee);
+                        selectedOption.selected = true;
+                        selectedOption.classList.remove('pre-selected-option');
+                    }
+                });
+                updateSelectedNames();
+                updateOptionStyles();
+                preSelectedEmployees.clear();
+            } 
+        });
+
+        removeButton.addEventListener('click', function () {
+            toBeRemovedEmployees.forEach(employee => {
+                const optionExists = Array.from(selectElement.options).some(option => option.value === employee);
+                if (optionExists) {
+                    const selectedOption = Array.from(selectElement.options).find(option => option.value === employee);
+                    selectedOption.selected = false;
+                    selectedOption.classList.remove('remove-mode');
+                }
+            });
+            toBeRemovedEmployees.clear();
+            updateSelectedNames();
+            updateOptionStyles();
+        });
+
+        function updateSelectedNames() {
+    const selectedNames = Array.from(selectElement.selectedOptions).map(option => option.value);
+    let htmlContent = '';
+
+    if (selectedNames.length > 0) {
+     
+        const columnWidth = 100 / 3;
+
+        htmlContent += '<div style="display: flex; flex-wrap: wrap; width: 100%;">'; 
+
+        for (let i = 0; i < selectedNames.length; i++) {
+            htmlContent += `<div style="width: ${columnWidth}%; box-sizing: border-box; padding: 5px; text-align: left;">* ${selectedNames[i]}</div>`;
+
+            if ((i + 1) % 3 === 0 && i !== selectedNames.length - 1) {
+                htmlContent += '</div><div style="display: flex; flex-wrap: wrap; width: 100%;">'; 
+            }
+        }
+
+        htmlContent += '</div>'; 
+    }
+
+    document.getElementById('selectedPersons').innerHTML = htmlContent;
+}
+
+    
+    updateSelectedNames();
+
+        function updateOptionStyles() {
+            const options = selectElement.options;
+            for (let i = 0; i < options.length; i++) {
+                if (preSelectedEmployees.has(options[i].value)) {
+                    options[i].classList.add('pre-selected-option');
+                } else {
+                    options[i].classList.remove('pre-selected-option');
+                }
+
+                if (options[i].selected && !options[i].classList.contains('remove-mode')) {
+                    options[i].classList.add('selected-option');
+                } else {
+                    options[i].classList.remove('selected-option');
+                }
+            }
+        }
+
+        selectElement.addEventListener('mousedown', function (event) {
+            event.preventDefault(); 
+        });
+
+        updateSelectedNames();
+        updateOptionStyles();
+    });
+</script>
+
+<style>
+ 
+
+ 
+
+   
+
+    .pre-selected-option {
+        background-color: #00a09d; 
+    }
+    .selected-option {
+        background-color: #875A7B; 
+    }
+    .remove-mode {
+        background-color: #dc3545; 
+    }
+</style>
+
+
+
+
+
+
+                     
+                    <input type="text" id="id_pilon" name="id_pilon"class="hidden"
+                    style="text-align: center; visibility: hidden; " disabled class="form-control" required><br>
+         
+                     
+
+                    
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="pilon_selected" style="text-align: left;" class="col-sm-4 col-form-label form-label">Pilón seleccionado:</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" style="text-align: center;" id="pilon_selected" name="pilon_selected" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="task_start_temp" style="text-align: left;" class="col-sm-4 col-form-label form-label">Temperatura:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="task_start_temp" name="task_start_temp" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+               
+
+                                
+
+         
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                        <label id="turningtask"  style="text-align: left;"  for="task_start_date" class="col-sm-4 col-form-label form-label">Fecha de inicio:</label>
+                        <div class="col-sm-7">
+                            <input type="date" id="task_start_date"  name="task_start_date"
+                                style="text-align: center;" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        <label id="turningstart"  style="text-align: left;"  for="start_time" class="col-sm-4 col-form-label form-label">Hora de inicio:</label>
+                        <div class="col-sm-7">
+                            <input type="time" id="start_time" name="start_time" style="text-align: center;"
+                                class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        <label  id="turningend"  style="text-align: left;"  for="task_end_date" class="col-sm-4 col-form-label form-label">Fecha de finalización:</label>
+                        <div class="col-sm-7">
+                            <input type="date" id="task_end_date" name="task_end_date" style="text-align: center;"
+                                class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        <label id="turningendtime"  style="text-align: left;"  for="end_time" class="col-sm-4 col-form-label form-label">Hora de finalización:</label>
+                        <div class="col-sm-7">
+                            <input type="time" id="end_time" name="end_time" style="text-align: center;"
+                                class="form-control" required><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    </div>
+                <hr>
+                    <button style="background: #00a09d"  id="saveTurningWettingButton" >Guardar tarea</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editPilonTaskModal" tabindex="-1" aria-labelledby="editPilonTaskModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 70%;">
+        <div class="modal-content">
+            <div class="modal-header"  style="background: #875a7b; border-radius: 5px; ">
+                <h5 class="modal-title" style="color: #ffffff;" id="editPilonTaskModal"><i
+                        class="bi bi-pencil-square just"></i> Actualizar tarea de pilón</h5>
+            </div>
+            <div class="modal-body">
+                <form id="edit_turning_wetting_Form">
+                    <div class="container">
+
+                    <input type="hidden" id="taskId" name="taskId">
+                          
+               
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group row align-items-center">
+                                <label style="text-align: left; " for="task" class="col-sm-3 col-form-label">Tarea del pilón:</label>
+                                <div class="col-sm-8">
+                                    <select style="text-align: center;" class="form-control" id="editTask" name="editTask" required>
+                                        <option id="turningselect" selected disabled readonly>Seleccione una opción</option>
+                                        <option value="Virado">Virado</option>
+                                        <option value="Mojado">Mojado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="id_orden" class="col-sm-3 col-form-label" style="text-align: left; ">Nº orden:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="n_orden" name="n_orden" class="form-control" readonly required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+<br>
+
+                    <div class="row mb-4">
+                        <label id="turningperson" style="text-align: left;" for="person_in_charge" class="col-sm-2 col-form-label form-label">Personal:</label>
+                        <div class="col-sm-9">
+                    
+                            
+                                <input style="width: 80%;  text-align: center;" type="text" class="form-control" id="editsearchInput" placeholder="Buscar empleado">
+                                <div style="display: flex; align-items: center;">
+                                    <select class="form-control" style="width: 80%; text-align: center;" id="EditPerson_in_charge" name="EditPerson_in_charge" required multiple>
+                                   
+                                    </select>
+                                    <div style="display: flex; flex-direction: column; align-items: center; ">
+                                        <button id="UpdateaddButton" class="btn btn-primary mb-2" style="background-color: rgba(255,255,255,0); border: none;" type="button">
+                                            <img src="../../../../resources/images/plus.png" width="40" height="40" alt="Agregar empleado">
+                                        </button>
+                                        <button id="UpdateremoveButton" class="btn btn-primary" style="background-color: rgba(255,255,255,0); border: none; " type="button">
+                                            <img src="../../../../resources/images/menos.png" width="40" height="40" alt="Quitar empleado">
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                                <br>
+                                <label style="font-weight: bold;" >Seleccionados:</label> 
+                                <div style="display: flex; flex-wrap: wrap;" id="personas_seleccionadas"></div>
+                              
+                            
+                    
+                        </div> 
+                    </div>
+              
+
+
+<style>
+ 
+
+
+
+
+    .pre-selected-option {
+        background-color: #00a09d; 
+        color: white;
+    }
+    .selected-option {
+        background-color: #875A7B;
+        color: white; 
+    }
+    .remove-mode {
+        background-color: #dc3545; 
+        color: white;
+    }
+</style>
+
+                    <script>
+                        const editsearchInput = document.getElementById('editsearchInput');
+                        const editmySelect = document.getElementById('EditPerson_in_charge');
+                    
+                  
+                        editsearchInput.addEventListener('input', function () {
+                            const searchTerm = editsearchInput.value.toLowerCase();
+                            const options = editmySelect.options;
+                    
+                            for (let i = 0; i < options.length; i++) {
+                                const option = options[i];
+                                const text = option.textContent.toLowerCase();
+                    
+                                if (text.includes(searchTerm)) {
+                                    option.style.display = 'block';
+                                } else {
+                                    option.style.display = 'none';
+                                }
+                            }
+                        });
+                    </script>
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const selectElement = document.getElementById('EditPerson_in_charge');
+    const personasSeleccionadasDiv = document.getElementById('personas_seleccionadas');
+    const addButton = document.getElementById('UpdateaddButton');
+    const removeButton = document.getElementById('UpdateremoveButton');
+
+
+    
+    let preSelectedEmployees = new Set();
+    let toBeRemovedEmployees = new Set();
+
+    selectElement.selectedIndex = -1;
+    personasSeleccionadasDiv.textContent = '';
+
+    function updateSelectedNames() {
+        const selectedNames = Array.from(selectElement.selectedOptions).map(option => option.value);
+        let htmlContent = '';
+
+        if (selectedNames.length > 0) {
+            const columnWidth = 100 / 3;
+
+            htmlContent += '<div style="display: flex; flex-wrap: wrap; width: 100%;">';
+
+            selectedNames.forEach((name, index) => {
+                htmlContent += `<div style="width: ${columnWidth}%; box-sizing: border-box; padding: 5px; text-align: left;">* ${name}</div>`;
+
+                if ((index + 1) % 3 === 0 && index !== selectedNames.length - 1) {
+                    htmlContent += '</div><div style="display: flex; flex-wrap; width: 100%;">';
+                }
+            });
+
+            htmlContent += '</div>';
+        }
+
+        personasSeleccionadasDiv.innerHTML = htmlContent;
+    }
+
+    function updateOptionStyles() {
+        const options = selectElement.options;
+        for (let i = 0; i < options.length; i++) {
+            if (preSelectedEmployees.has(options[i].value)) {
+                options[i].classList.add('pre-selected-option');
+            } else {
+                options[i].classList.remove('pre-selected-option');
+            }
+            if (options[i].selected && !options[i].classList.contains('remove-mode')) {
+                options[i].classList.add('selected-option');
+            } else {
+                options[i].classList.remove('selected-option');
+            }
+        }
+    }
+
+    $('#editPilonTaskModal').on('show.bs.modal', function () {
+      
+        updateSelectedNames();
+        updateOptionStyles();
+    });
+
+    selectElement.addEventListener('click', function (event) {
+        const option = event.target;
+        if (option.tagName === 'OPTION') {
+            if (option.selected) {
+                if (toBeRemovedEmployees.has(option.value)) {
+                    toBeRemovedEmployees.delete(option.value);
+                    option.classList.remove('remove-mode');
+                } else {
+                    toBeRemovedEmployees.add(option.value);
+                    option.classList.add('remove-mode');
+                }
+            } else {
+                if (preSelectedEmployees.has(option.value)) {
+                    preSelectedEmployees.delete(option.value);
+                } else {
+                    preSelectedEmployees.add(option.value);
+                }
+                option.selected = false; 
+                updateOptionStyles();
+            }
+        }
+    });
+
+    addButton.addEventListener('click', function () {
+        if (preSelectedEmployees.size > 0) {
+            preSelectedEmployees.forEach(employee => {
+                const optionExists = Array.from(selectElement.options).some(option => option.value === employee);
+                if (optionExists) {
+                    const selectedOption = Array.from(selectElement.options).find(option => option.value === employee);
+                    selectedOption.selected = true;
+                    selectedOption.classList.remove('remove-mode');
+                }
+            });
+            updateSelectedNames();
+            updateOptionStyles();
+            preSelectedEmployees.clear();
+        }
+    });
+
+    removeButton.addEventListener('click', function () {
+        toBeRemovedEmployees.forEach(employee => {
+            const optionExists = Array.from(selectElement.options).some(option => option.value === employee);
+            if (optionExists) {
+                const selectedOption = Array.from(selectElement.options).find(option => option.value === employee);
+                selectedOption.selected = false;
+                selectedOption.classList.remove('remove-mode');
+            }
+        });
+        toBeRemovedEmployees.clear();
+        updateSelectedNames();
+        updateOptionStyles();
+    });
+
+    selectElement.addEventListener('mousedown', function (event) {
+        event.preventDefault(); 
+    });
+
+
+    updateSelectedNames();
+    updateOptionStyles();
+});
+
+
+
+
+</script>
+
+                                
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="EditPilon_selected" style="text-align: left;" class="col-sm-4 col-form-label form-label">Pilón seleccionado:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="EditPilon_selected" name="EditPilon_selected"
+                                    style="text-align: center;" disabled class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="task_start_temp" style="text-align: left;" class="col-sm-4 col-form-label form-label">Temperatura:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="EditTask_start_temp" name="EditTask_start_temp"
+                                    style="text-align: center; background-color: #ff00003b;" disabled class="form-control"
+                                    required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+               
+
+
+
+                 
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                            <label id="turningtask"  style="text-align: left;"  for="task_start_date" class="col-sm-4 col-form-label form-label">Fecha de inicio:</label>
+                            <div class="col-sm-7">
+                                <input type="date" id="EditTask_Start_Date" disabled name="EditTask_Start_Date"
+                                style="text-align: center;" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            <label id="turningstart"  style="text-align: left;"  for="start_time" class="col-sm-4 col-form-label form-label">Hora de inicio:</label>
+                            <div class="col-sm-7">
+                                <input type="time" id="EditStart_time" name="EditStart_time" style="text-align: center;"
+                                class="form-control" disabled required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        <label  id="turningend"  style="text-align: left;"  for="task_end_date" class="col-sm-4 col-form-label form-label">Fecha de finalización:</label>
+                        <div class="col-sm-7">
+                            <input type="date" id="EditTask_End_Date" name="EditTask_End_Date"
+                            style="text-align: center;" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        <label id="turningendtime"  style="text-align: left;"  for="end_time" class="col-sm-4 col-form-label form-label">Hora de finalización:</label>
+                        <div class="col-sm-7">
+                            <input type="time" id="EditEnd_time" name="EditEnd_time" style="text-align: center;"
+                            class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                  
+                    </div>
+                    <hr>
+                    <button id="updateTurningWettingButton" type="submit"
+                        style="background-color: #00a09d; border-radius: 10px; border: none;"
+                        class="btn btn-success">Guardar cambios</button>
+                
+                 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successTaskModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>La tarea del pilón fue creada exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- ERROR MODAL -->
+<div class="modal fade" id="errorTaskModal" tabindex="-1" role="dialog" aria-labelledby="errorTaskModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+                <h5 class="modal-title" id="errorTaskModalLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="successUpdateModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"   style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>La tarea fue modificada exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- DETAILS MODAL -->
+<div class="modal fade" id="detailsTaskModal" tabindex="-1" aria-labelledby="detailsTaskModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 60%; "> 
+        <div class="modal-content">
+            <div  style="background: #875a7b; border-radius: 5px; "  class="modal-header" >
+                <h5 class="modal-title" style="color: #ffffff;" id="detailsTaskModalLabel"><i
+                        class="bi bi-info-circle"></i> Información de la tarea</h5>
+            </div>
+            <div class="modal-body">
+                <form id="detailsTaskForm">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deletePilonTaskModal" tabindex="-1" aria-labelledby="deleteProcesoPilonTaskLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #890d0d, #890d0dc0, #c90000c0);"">
+                <h5 class=" modal-title" style="color: #ffffff;" id="deletePilonTaskModal"><i class="bi bi-trash3"></i>
+                Eliminar</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>¿Está seguro que quiere borrar la tarea?</strong>
+          
+                <br><button id="deleteTareaButton" class="btn btn-primary"
+                    style="background-color: #c90000c0;  border: 0px;" type="button"
+                    onclick="deleteTarea()">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>

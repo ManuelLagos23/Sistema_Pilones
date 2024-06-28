@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Copia de datos</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+    <%- include('../partials/modals/_modal_variedad') %>
+    <%- include('../partials/modals/_modal_corte') %>
+    <%- include('../partials/modals/_modal_clase') %>
+    <%- include('../partials/modals/_modal_finca') %>
+    <%- include('../partials/modals/_modal_etapa') %>
+    <%- include('../partials/modals/_modal_tipo') %>
+    <%- include('../partials/modals/_modal_proceso') %>
+    <%- include('../partials/modals/_modal_login_correo') %>
+
+
+
+
+
+
+    <style>
+      /* Estilo personalizado para el contenedor de la tarjeta */
+      .card-container {
+        max-width: 25%;
+        margin: 50px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+  
+      /* Estilo personalizado para el botón */
+      .btn-actualizar {
+        width: 100%;
+        margin-top: 20px; /* Agrega espacio en la parte superior */
+      }
+  
+ 
+  
+      h1 {
+        font-family: 'Arial', sans-serif;
+        font-size: 28px;
+        color: #000000;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+  
+    
+  
+  
+    </style>
+
+</head>
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+
+
+    <%- include('../partials/modals/_modal_correo') %>
+    <%- include('../partials/modals/_modal_login_correo') %>
+    <%- include('../partials/modals/_modal_informacion_login') %>
+
+
+
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" style="background: linear-gradient(to right, #154c29f0, #1d8943f0, #2cdb69f0);">
+              <h5 class="modal-title" style="color: #ffffff;" id="confirmacionModalLabel"><i ></i>
+                  Confirmar la acción</h5>
+          </div>
+          <div class="modal-body">
+              <p>¿Estás seguro de que desea enviar los datos?</p>
+          </div>
+          <div class="modal-footer">
+              <!-- Botón para ejecutar la acción de "Sí" -->
+              <button type="button" class="btn btn-success" onclick="ejecutarAccionSi()">Sí</button>
+              <!-- Botón para cerrar el modal -->
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Contenedor de la tarjeta -->
+<div class="card card-container">
+  <div class="card-body text-center">
+      <h1 class="card-title">Enviar datos al servidor</h1>
+      <!-- Botón para abrir el modal de confirmación -->
+      <button   class="btn btn-primary btn-actualizar" onclick="mostrarModalConfirmacion()">Enviar datos</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successDatosModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background: linear-gradient(to right, #154c29f0, #1d8943f0, #2cdb69f0);">
+              <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p></p>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successErrorModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background: linear-gradient(to right, #7c0808f4, #a80c0ce3, #eb0303c0);">
+              <h5 class="modal-title" id="successModalLabel">Error</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p></p>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Script para manejar el modal de confirmación y ejecutar la acción correspondiente -->
+<script>
+  // Función para mostrar el modal de confirmación
+  function mostrarModalConfirmacion() {
+      $('#confirmacionModal').modal('show');
+  }
+
+// Función para ejecutar la acción de "Sí"
+// Función para ejecutar la acción de "Sí"
+function ejecutarAccionSi() {
+  // Realizar una solicitud al servidor cuando se presiona el botón "Sí"
+  fetch('/actualizar/local_a_servidor', { method: 'POST' })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // La respuesta indica éxito, muestra el modal de éxito personalizado
+        mostrarModalExito('Los datos se han enviado exitosamente.');
+      } else {
+        // La respuesta indica un error, muestra el modal de error personalizado
+        mostrarModalError(data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Muestra un modal de error en caso de error de red u otro problema
+      mostrarModalError('Ocurrió  un error durante el envío de datos.');
+    })
+    .finally(() => {
+      // Cerrar el modal de confirmación después de la acción
+      $('#confirmacionModal').modal('hide');
+    });
+}
+
+
+
+
+
+
+
+
+// Función genérica para mostrar un modal de éxito
+function mostrarModalExito(mensaje) {
+  // Cambia el contenido del modal de éxito con el mensaje proporcionado
+  $('#successDatosModal .modal-body p').text(mensaje);
+
+  // Muestra el modal de éxito
+  $('#successDatosModal').modal('show');
+}
+
+
+// Función genérica para mostrar un modal de error
+function mostrarModalError(mensaje) {
+  // Cambia el contenido del modal de error con el mensaje proporcionado
+  $('#successErrorModal .modal-body p').text(mensaje);
+
+  // Muestra el modal de error
+  $('#successErrorModal').modal('show');
+}
+
+</script>
+  <script src="/resources/js/language/_language_change.js"></script>
+  <script src="/resources/js/language/_language_save.js"></script>
+
+
+
+
+  <script src="/resources/js/_correo_scripts.js"></script>
+  <script src="/resources/js/_login_correo_scripts.js"></script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

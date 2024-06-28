@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id="titulopagesensor">Tipos</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+   
+
+    
+</head>
+
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+    <%- include('../partials/modals/_modal_tipo') %>
+  
+    
+    <%- include('../partials/modals/_modal_correo') %>
+    <%- include('../partials/modals/_modal_login_correo') %>
+    <%- include('../partials/modals/_modal_informacion_login') %>
+
+            <div  class="mt-2 toggle-div">
+                <label id="showcolumns" for="">Mostrar/Ocultar columnas: </label><a id="showardu" class="toggle-vis" data-column="0">Código</a>&nbsp;
+                <a class="toggle-vis" data-column="1">Tipo</a>&nbsp;
+                <a id="showport" class="toggle-vis" data-column="2">Descripción</a>&nbsp;
+           
+            </div>
+
+
+
+            <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+                <div class="table-responsive small justify-content-sm-center">
+                    <table id="myTableTipo" class="display table table-striped table-sm table-bordered">
+                        <thead class="table-success">
+                            <tr>
+                                <th style="text-align: center;"   id="arduname" scope="col">Código</th>
+                                <th style="text-align: center;" id="address"  scope="col">Tipo</th>
+                                <th style="text-align: center;"  id="connecpc" scope="col">Descripción</th>
+                             
+                                <th style="text-align: center;"  id="arduopti" scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tipoList">
+                 
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+     
+  
+
+            <script src="/resources/js/_tipo_scripts.js"></script>
+         
+
+            <script src="/resources/js/_correo_scripts.js"></script>
+            <script src="/resources/js/_login_correo_scripts.js"></script>
+ 
+
+            
+        
+</body>
+
+</html>

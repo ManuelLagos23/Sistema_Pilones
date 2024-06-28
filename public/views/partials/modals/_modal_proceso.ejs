@@ -1,0 +1,375 @@
+<style>
+
+
+
+
+
+input{
+    text-align: center;
+}
+    /* Estilo base del switch */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+    /* Estilo del input oculto */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* Estilo del slider del switch */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    /* Estilo del punto deslizante */
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    /* Estilo del punto deslizante cuando el switch está activado */
+    input:checked + .slider {
+        background-color: #875A7B;
+    }
+
+    /* Estilo del punto deslizante cuando el switch está activado */
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Estilo adicional para mejorar la apariencia */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+    /* Estilo para la alineación en línea */
+    .inline-label {
+        display: flex;
+        align-items: center;
+    }
+
+    .inline-label label {
+        margin: 0 10px;
+    }
+</style>
+
+<div class="modal fade" id="createProcesoModal" tabindex="-1" aria-labelledby="createProcesoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 50%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="createModal"><i
+                        class="bi bi-box-arrow-down"></i> <p id="titleproceso"  style="display: inline;"> Agregar proceso</p></h5>
+            </div>
+            <div class="modal-body">
+                <form id="createProcesoForm">
+                    <div class="row mb-3">
+
+
+                        <label for="nombre" class="col-sm-3 col-form-label form-label0">Código del proceso:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="codigo_proceso" name="codigo_proceso" class="form-control"
+                                placeholder="Ejemplo: Código" required><br>
+                        </div>
+
+                        <label id="modalworkername" for="nombre" class="col-sm-3 col-form-label form-label0">Proceso del tabaco:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre_proceso" name="nombre_proceso" class="form-control"
+                                placeholder="Ejemplo: Fermentación" required><br>
+                        </div>
+
+                        
+                         
+                    <label id="modalworkername" for="nombre" class="col-sm-3 col-form-label form-label0">Descripción del proceso:</label>
+                    <div style="margin-bottom: 3%;" class="col-sm-9">
+                        <input type="text" id="descripcion_proceso" name="descripcion_proceso" class="form-control"
+                            placeholder="Ejemplo: Describa el tipo de proceso" required><br>
+                    </div>
+
+                    <label  for="nombre" class="col-sm-3 col-form-label form-label0">¿Agregar proceso al dashboard?</label>
+                    <div class="col-sm-9">
+                        <label>No</label>
+                        <label class="switch" style="text-align: center;">
+                            <input type="checkbox" id="proceso_dashboard" id="proceso_dashboard" name="proceso_dashboard"  onchange="updateSwitchValue(this)">
+                            <span class="slider round"></span>
+                        </label>
+                        <label>Sí</label>
+                    </div>
+
+
+
+  
+            
+          
+<script>
+    function updateSwitchValue(input) {
+        var valueLabel = input.parentNode.querySelector('label:last-of-type');
+        if (input.checked) {
+            input.value = 'Sí';
+            valueLabel.textContent = 'Sí';
+        } else {
+            input.value = 'No';
+            valueLabel.textContent = 'No';
+        }
+    }
+
+    // Establecer el valor predeterminado en "No"
+    document.getElementById('proceso_dashboard').checked = false;
+    updateSwitchValue(document.getElementById('proceso_dashboard'));
+</script>
+               
+                </div>
+                <hr>
+                   
+
+                    <button id="createProcesoButton" class="btn btn-success" style="background: #00a09d"
+                        type="submit">Guardar nuevo proceso</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successProcesoModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>La proceso se creó correctamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="errorProcesoModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p id="errorModalMessage"></p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editProcesoModal" tabindex="-1" aria-labelledby="editProcesoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="editProcesoModal"><i
+                        class="bi bi-pencil-square just"></i> Actualizar Proceso</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editProcesoForm">
+                    <input type="hidden" id="procesoId" name="procesoId">
+  
+
+                    <div class="row mb-3">
+                        <label for="editCodigo" class="col-sm-3 col-form-label form-label0">Código del proceso:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editCodigo" name="editCodigo" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editTipo" class="col-sm-3 col-form-label form-label0">Proceso del tabaco:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editProceso" name="editProceso" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editDescripcion" class="col-sm-3 col-form-label form-label0">Descripción del proceso:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editDescripcion" name="editDescripcion" class="form-control" required>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-3">
+                        <label for="nombre" class="col-sm-3 col-form-label form-label0">¿Agregar proceso al dashboard?</label>
+                        <div class="col-sm-9">
+                            <label >No</label>
+                            <label class="switch" style="text-align: center;">
+                                <input type="checkbox" id="edit_proceso_dashboard" name="edit_proceso_dashboard" onchange="updateSwitchValue(this)">
+                                <span class="slider round"></span>
+                            </label>
+                            <label >Sí</label>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    
+                    <script>
+                        $(document).ready(function() {
+                            function updateSwitchValue(input) {
+    var valueLabel = input.parentNode.querySelector('label:last-of-type');
+    if (input.checked) {
+        input.value = 'Sí';
+        valueLabel.textContent = 'Sí';
+    } else {
+        input.value = 'No';
+        valueLabel.textContent = 'No';
+    }
+}
+document.getElementById("proceso_dashboard").addEventListener("change", function() {
+    updateSwitchValue(this);
+});
+
+                
+                
+                            // Función para ajustar el estado del interruptor
+                            function setSwitchValue(value) {
+                                if (value === 'Sí' || value==="si" ) {
+                                    $("#edit_proceso_dashboard").prop('checked', true);
+                                } else {
+                                    $("#edit_proceso_dashboard").prop('checked', false);
+                                }
+                                updateSwitchValue(document.getElementById('edit_proceso_dashboard'));
+                            }
+                
+                            // UPDATE MODAL
+                            $("#procesoList").on("click", ".edit-btn", function () {
+                                const procesoId = $(this).data("id");
+                
+                                $.get(`/api/proceso/${procesoId}`, function (proceso) {
+                                    $("#editCodigo").val(proceso.codigo);
+                                    $("#editProceso").val(proceso.proceso_tabaco);
+                                    $("#editDescripcion").val(proceso.descripcion);
+                                   
+                
+                                    // Establecer el valor del interruptor y actualizar su estilo
+                                    setSwitchValue(proceso.agregar_proceso);
+                
+                                    $("#editProcesoModal").modal("show");
+                                    $("#updateProcesoButton").data("id", procesoId);
+                                });
+                            });
+                
+                            // Llama a updateSwitchValue cuando el switch cambie de estado
+                            $("#edit_proceso_dashboard").on('change', function() {
+                                updateSwitchValue(this);
+                            });
+                        });
+                    </script>
+                    
+                    
+                
+                <hr>
+                   
+
+                    <button id="updateProcesoButton" class="btn btn-primary"
+                    style="background: #00a09d" type="submit">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SUCCESS MODAL UPDATE -->
+<div class="modal fade" id="successProcesoModalUpdate" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El proceso se actualizó exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deleteProcesoModal" tabindex="-1" aria-labelledby="deleteProcesoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #890d0d, #890d0dc0, #c90000c0);"">
+                <h5 class=" modal-title" style="color: #ffffff;" id="deleteProcesoModal"><i class="bi bi-trash3"></i>
+                Eliminar</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>¿Está seguro que quiere borrar el proceso?</strong>
+          
+                <br><button id="deleteProcesoButton" class="btn btn-primary"
+                    style="background-color: #c90000c0;  border: 0px;" type="button"
+                    onclick="deleteProceso()">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>

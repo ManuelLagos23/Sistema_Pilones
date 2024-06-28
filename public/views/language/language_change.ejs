@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Idioma</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+
+
+</head>
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+    <%- include('../partials/modals/_modal_variedad') %>
+    <%- include('../partials/modals/_modal_corte') %>
+    <%- include('../partials/modals/_modal_clase') %>
+    <%- include('../partials/modals/_modal_finca') %>
+    <%- include('../partials/modals/_modal_etapa') %>
+    <%- include('../partials/modals/_modal_tipo') %>
+    <%- include('../partials/modals/_modal_proceso') %>
+    <%- include('../partials/modals/_modal_correo') %>
+    <%- include('../partials/modals/_modal_login_correo') %>
+    <%- include('../partials/modals/_modal_informacion_login') %>
+    <h1 id="titulo">Welcome</h1>
+    <p id="parrafo">This is a sample text in English.</p>
+    
+    <button  style="background: #00a09d" id="cambiarIdioma" onclick="cambiarIdioma()">Cambiar Idioma</button>
+
+
+
+
+  <script src="/resources/js/language/_language_change.js"></script>
+  <script src="/resources/js/language/_language_save.js"></script>
+
+  <script src="/resources/js/language/_language_core.js"></script>
+
+
+ 
+  <script src="/resources/js/_correo_scripts.js"></script>
+  <script src="/resources/js/_login_correo_scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editPilonModal" tabindex="-1" aria-labelledby="editPilonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 70%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="editPilonModalLabel"><i class="bi bi-pencil-square"></i> <p  style="display: inline;"> Actualizar pilón</p></h5>
+            </div>
+
+            <hr>
+            <div class="modal-body wb">
+                <form id="editPilonForm">
+                    <input type="hidden" id="pilonId" name="pilonId">
+                    <div class="row mb-3">
+                        <div style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editNombre" id="editNombrePilon" class="form-label">Nombrel del pilón</label>
+                            <input type="text" id="editNombre" name="editNombre" class="form-control w-50 text-center" required>
+                 
+                        </div>
+                 
+                   
+                        <div style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editFinca" id="editFincaFarma" class="form-label">Finca</label>
+                            <select class="form-control" style="text-align: center;  width: 50%;" id="editFinca"
+                            name="editFinca"  selected required>
+                            
+
+                        </select> 
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editVariedad" class="form-label">Variedad del tabaco</label>
+
+                            <select class="form-control" style="text-align: center;  width: 50%;" id="editVariedad"
+                            name="editVariedad"  selected required>
+                            
+
+                        </select> 
+                        </div>
+
+                    
+
+
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editCorte" class="form-label">Corte del tabaco</label>
+                            <select class="form-control" style="text-align: center;  width: 50%;" id="editCorte"
+                            name="editCorte"  selected required>
+                            
+
+                        </select> 
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editClase" class="form-label">Clase del tabaco</label>
+                            <select class="form-control" style="text-align: center;  width: 50%;" id="editClase"
+                            name="editClase"  selected required>
+                            
+
+                        </select> 
+                        </div>
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editCosecha" class="form-label">Cosecha del tabaco</label>
+                            <input type="text" id="editCosecha" name="editCosecha" class="form-control w-50 text-center" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editEtapa" class="form-label">Etapa del pilón</label>
+                            <select class="form-control" style="text-align: center;  width: 50%;" id="editEtapa"
+                            name="editEtapa"  selected required>
+                            
+
+                        </select> 
+                        </div>
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editTipo" class="form-label">Tipo de tabaco</label>
+                            <select class="form-control" style="text-align: center;  width: 50%;" id="editTipo"
+                            name="editTipo"  selected required>
+                            
+
+                        </select> 
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editPN" class="form-label">Peso neto del pilón</label>
+                            <input type="number" id="editPN" name="editPN" class="form-control w-50 text-center" placeholder="PN del tabaco" required step="0.01">
+                        </div>
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editEmpilonado" class="form-label">Fecha de empilonado</label>
+                            <input type="date" id="editEmpilonado" name="editEmpilonado" class="form-control w-50 text-center" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editTempMin" class="form-label">Temperatura mínima aceptada</label>
+                            <input type="number" id="editTempMin" name="editTempMin" class="form-control w-50 text-center" required>
+                        </div>
+
+                      
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editEstado" class="form-label">Estado del pilón</label>
+                            <select id="editEstado" name="editEstado" required class="form-control w-50 text-center">
+                                <option value="En proceso">En proceso</option>
+                                <option value="Finished">Finalizado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                       
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editTempMax" class="form-label">Temperatura máxima aceptada</label>
+                            <input type="number" id="editTempMax" name="editTempMax" class="form-control w-50 text-center" required>
+                        </div>
+                     
+                        <div  style="margin-bottom: 1%;" class="col-md-6 d-flex justify-content-between align-items-center">
+                            <label for="editProceso" class="form-label">Proceso del pilón</label>
+                            <select class="form-control" style="text-align: center;  width: 50%;" id="editProceso"
+                            name="editProceso"  selected required>
+                            
+
+                        </select> 
+                        </div>
+                    </div>
+               <hr>
+                   
+                    
+                    <button id="updatePilonButton" class="btn btn-primary" style="background: #00a09d" type="submit">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DETAILS MODAL -->
+<div class="modal fade" id="detailsPilonModal" tabindex="-1" aria-labelledby="detailsPilonModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div  style="background: #875a7b; border-radius: 5px; "  class="modal-header" >
+                <h5 class="modal-title" style="color: #ffffff;" id="detailsPilonModalLabel"><i
+                        class="bi bi-info-circle"></i> Información del pilón</h5>
+            </div>
+            <div class="modal-body">
+                <form id="detailsPilonForm">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TOBACCO WETTING REGISTERS MODAL -->
+<div class="modal fade" id="wettingPilonModal" tabindex="-1" aria-labelledby="wettingPilonModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 90%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" style="color: #ffffff;" id="wettingPilonModal"><i class="bi bi-activity"></i>
+                    Tobacco wetting registers</h5>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive small">
+                    <table id="wettingTable" class="display table table-striped table-sm table-bordered">
+                        <thead class="table">
+                            <tr>
+                                <th scope="col">Person in charge</th>
+                                <th scope="col">Pilón</th>
+                                <th scope="col">Pilón task</th>
+                                <th scope="col">Task date</th>
+                                <th scope="col">Start task time</th>
+                                <th scope="col">End task time</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deletePilonModal" tabindex="-1" aria-labelledby="deletePilonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #7c0808f4, #a80c0ce3, #eb0303c0);">
+                <h5 class="modal-title" style="color: #ffffff;" id="deletePilonModalLabel"><i class="bi bi-trash3"></i>
+                    Delete</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>Are you sure you want to remove this pilón?</strong>
+                    <br>This action is irreversible and will delete everything related to this pilón and the
+                    temperatures stored in it.
+                    temperatures obtained from it.</a><br>
+                <br><button id="deletePilonButton" class="btn btn-primary"
+                    style="background-color: #c90000c0;  border: 0px;" type="button"
+                    onclick="deletePilon()">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" style="color: #ffffff;" id="successModalLabel">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>The pilón was created successfully.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ERROR MODAL -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+                <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="errorModalMessage">The pilón could not be removed. Please try again later.</p>
+            </div>
+        </div>
+    </div>
+</div>
+

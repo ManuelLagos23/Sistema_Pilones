@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Humidity history</title>
+    <%- include('../partials//cdn_head/_cdn_head') %>
+</head>
+
+<body>
+    <%- include('../partials/modals/_modal_correo') %>
+    <%- include('../partials/modals/_modal_login_correo') %>
+    <%- include('../partials/modals/_modal_informacion_login') %>
+    <%- include('../partials/navbar/_navbar') %>
+    <%- include('../partials/modals/_modal_variedad') %>
+    <%- include('../partials/modals/_modal_corte') %>
+    <%- include('../partials/modals/_modal_clase') %>
+    <%- include('../partials/modals/_modal_finca') %>
+    <%- include('../partials/modals/_modal_etapa') %>
+    <%- include('../partials/modals/_modal_tipo') %>
+    <%- include('../partials/modals/_modal_proceso') %>
+
+        <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+            <div class="table-responsive small">
+                <table id="myTable" class="display table table-striped table-sm table-bordered">
+                    <thead class="table-success">
+                        <tr>
+                            <th scope="col">Pilón</th>
+                            <th id="humidate" scope="col">Reading date</th>
+                            <th id="humitime" scope="col">Reading time</th>
+                            <th id="humireadings" scope="col">Readings</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- SCRIPTS -->
+        <script src="/resources/js/_humidity_scripts.js"></script>
+        <script src="/resources/js/language/_language_change.js" ></script>     
+        <script src="/resources/js/language/_language_save.js"></script> 
+        <script src="/resources/js/language/_language_humi_history.js"></script>
+      
+        <script src="/resources/js/_correo_scripts.js"></script>
+        <script src="/resources/js/_login_correo_scripts.js"></script>
+</body>
+
+</html>

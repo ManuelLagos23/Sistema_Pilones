@@ -1,0 +1,36 @@
+{
+  "name": "pilones_temps",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/parser-readline": "^11.0.1",
+    "axios": "^1.6.2",
+    "bcrypt": "^5.1.1",
+    "bootstrap": "^5.3.1",
+    "bootstrap-icons": "^1.10.5",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "docxtemplater": "^3.47.4",
+    "ds18b20": "^0.1.0",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "fs": "^0.0.1-security",
+    "gaxios": "^6.1.1",
+    "googleapis": "^129.0.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.10.1",
+    "next-auth": "^4.24.7",
+    "nodemailer": "^6.9.12",
+    "nodemon": "^3.0.1",
+    "serialport": "^11.0.1",
+    "socket.io": "^4.7.2"
+  },
+  "description": ""
+}

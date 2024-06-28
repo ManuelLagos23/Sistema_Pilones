@@ -1,0 +1,185 @@
+<!-- CREATION MODAL -->
+
+
+<div class="modal fade" id="createArduinoModal" tabindex="-1" aria-labelledby="createArduinoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div  class="modal-header"  style="background: #875a7b; border-radius: 5px;" >
+                <h5  class="modal-title" style="color: #ffffff;" id="createArduinoModal"  ><i 
+                        class="bi bi-box-arrow-down"></i> <p   style="display: inline;"> Crear nuevo sensor</p></h5>
+            </div>
+            <div class="modal-body">
+                <form id="createArduinoForm">
+
+                    <div class="row mb-3">
+                        <label  for="nombre" class="col-sm-3 col-form-label form-label0">Nombre del sensor:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: Sensor 05"
+                                required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="direccion_bits" class="col-sm-3 col-form-label form-label0">Dirección del sensor:</label>
+                        <div class="col-sm-9">
+                            <input type="text" minlength="16" maxlength="16" id="direccion_bits" class="form-control"
+                                placeholder="Ejemplo: 38BEFD79970003CB" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label  for="pilon_encargado" class="col-sm-3 col-form-label form-label0">Asignado al pilón:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" style="text-align: center;" id="pilon_encargado" >
+                          
+                            </select>
+                          
+                        </div>
+                    </div>
+
+                    <!-- IS THAT NECCESARY? I REALLY THINK IT'S NOT -->
+                    <div class="row mb-3">
+                        <label id="arduinomodalconnected" for="arduino_port" class="col-sm-3 col-form-label form-label0">Conectado a:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" style="text-align: center;" id="arduino_port" required>
+                                <option value="/dev/ttyACM0">/dev/ttyACM0</option>
+                                <option value="/dev/ttyACM1">/dev/ttyACM1</option>
+                                <option value="/dev/ttyACM2">/dev/ttyACM2</option>
+                                <!-- ... Add more PC Ports if its necessary -->
+                            </select>
+                        </div>
+                    </div>  
+                    <button id="arduinomodalsave" class="btn btn-success" data-toggle="modal" data-target="#createArduinoModal"
+                        style="background: #00a09d">Guardar sensor</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editArduinoModal" tabindex="-1" aria-labelledby="editArduinoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div class="modal-header"  style="background: #875a7b; border-radius: 5px; ">
+                <h5  class="modal-title" style="color: #ffffff;" ><i
+                        class="bi bi-pencil-square just"></i> Actualizar sensor</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editArduinoForm">
+                    <input type="hidden" id="arduinoId" name="arduinoId">
+
+                    <div class="row mb-3">
+                        <label for="editNombre" class="col-sm-3 col-form-label form-label0" >Nombre del sensor:</label> 
+                        <div class="col-sm-9">
+                            <input style="text-align: center;"   type="text" id="editNombre" name="editNombre" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editDireccion" class="col-sm-3 col-form-label form-label0" >Dirección del sensor:</label>
+                        <div class="col-sm-9">
+                            <input type="text" style="text-align: center;"    id="editDireccion" minlength="16" maxlength="16" name="editDireccion" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editPilonEncargado" class="col-sm-3 col-form-label form-label0" id="sensorPilon">Asignado al pilón:
+                            </label>
+                        <div class="col-sm-9">
+                            <select id="editPilonEncargado" style="text-align: center;" name="editPilonEncargado" class="form-control">
+                              
+                        
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-3">
+                        <label for="EditPort" class="col-sm-3 col-form-label form-label0" id="connectA">Conectado a:</label>
+                        <div class="col-sm-9">
+                            <select id="EditPort" style="text-align: center;" name="EditPort" required class="form-control">
+                                <option value="/dev/ttyACM0">/dev/ttyACM0</option>
+                                <option value="/dev/ttyACM1">/dev/ttyACM1</option>
+                                <option value="/dev/ttyACM2">/dev/ttyACM2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="updateArduinoButton" class="btn btn-primary"
+                    style="background: #00a09d" type="submit">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deleteArduinoModal" tabindex="-1" aria-labelledby="deleteArduinoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #890d0d, #890d0dc0, #c90000c0);">
+                <h5 class=" modal-title" style="color: #ffffff;" id="deleteArduinoModalLabel"><i
+                    class="bi bi-trash3"></i> Delete</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>¿Está seguro que quiere borrar el sensor?</strong>
+                   
+                <br><button id="deleteArduinoButton" class="btn btn-primary"
+                    style="background-color: rgba(201, 0, 0, 0.753);  border: 0px;" type="button"
+                    onclick="deleteArduino()">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"   style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El arduino se creó correctamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- ERROR MODAL -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+                <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>No se pudo crear el arduino, verifique los datos y vuelva a intentarlo.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

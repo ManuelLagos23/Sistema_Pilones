@@ -1,0 +1,169 @@
+<style>
+
+    input{
+        text-align: center;
+    }
+</style>
+
+
+
+<!-- CREATE MODAL -->
+<div class="modal fade" id="createFincaModal" tabindex="-1" aria-labelledby="createWorkerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="createFincaModal"><i
+                        class="bi bi-box-arrow-down"></i> <p id="titleworker"  style="display: inline;"> Agregar nueva finca</p></h5>
+            </div>
+            <div class="modal-body">
+                <form id="createFincaForm">
+                    <div class="row mb-3">
+
+
+                        <label id="modalworkername" for="nombre" class="col-sm-3 col-form-label form-label0">Código de finca:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="codigo_finca" name="nombre_finca" class="form-control"
+                                placeholder="Ejemplo: Finca" required><br>
+                        </div>
+
+                        <label id="modalworkername" for="nombre" class="col-sm-3 col-form-label form-label0">Finca del tabaco:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre_finca" name="nombre_finca" class="form-control"
+                                placeholder="Ejemplo: Camacho" required><br>
+                        </div>
+
+                        
+                         
+                    <label id="modalworkername" for="nombre" class="col-sm-3 col-form-label form-label0">Descripción de finca:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="descripcion_finca" name="nombre_finca" class="form-control"
+                            placeholder="Ejemplo: Describa el tipo de finca" required><br>
+                    </div>
+                    </div>
+
+
+                    <hr>
+
+                    <button id="createVariedadButton" class="btn btn-success" style="background: #00a09d"
+                        type="submit">Guardar nueva finca</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="successFincaModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>La finca se creó correctamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editFincaModal" tabindex="-1" aria-labelledby="editFincaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="editWorkerModal"><i
+                        class="bi bi-pencil-square just"></i> Actualizar Finca</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editFincaForm">
+                    <input type="hidden" id="fincaId" name="fincaId">
+
+                    <div class="row mb-3">
+                        <label for="editCodigo" class="col-sm-3 col-form-label form-label0">Código de finca:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editCodigo" name="editCodigo" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editFinca" class="col-sm-3 col-form-label form-label0">Finca del tabaco:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editFinca" name="editFinca" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editDescripcion" class="col-sm-3 col-form-label form-label0">Descripción de finca:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editDescripcion" name="editDescripcion" class="form-control" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <button id="updateFincaButton" class="btn btn-primary"
+                    style="background: #00a09d" type="submit">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- SUCCESS MODAL UPDATE -->
+<div class="modal fade" id="successFincaModalUpdate" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>La finca se actualizó exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deleteFincaModal" tabindex="-1" aria-labelledby="deleteFincaModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #890d0d, #890d0dc0, #c90000c0);"">
+                <h5 class=" modal-title" style="color: #ffffff;" id="deleteClaseModal"><i class="bi bi-trash3"></i>
+                Eliminar</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>¿Está seguro que quiere borrar la finca?</strong>
+          
+                <br><button id="deleteFincaButton" class="btn btn-primary"
+                    style="background-color: #c90000c0;  border: 0px;" type="button"
+                    onclick="deleteFinca()">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>

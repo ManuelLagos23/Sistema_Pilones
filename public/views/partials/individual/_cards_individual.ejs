@@ -1,0 +1,138 @@
+
+<style>
+    /* Estilos para el input */
+    #tempInput {
+        font-size: 14px;
+        border: 1px solid #dfe1e5;
+        border-radius: 12px;
+        padding: 10px;
+        width: 30%;
+        background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #FFFFFF 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
+        box-sizing: border-box;
+        
+        transition: border-color 0.3s; /* Agregamos transición para suavizar el cambio de color */
+    }
+
+    /* Estilos para el input cuando está enfocado */
+    #tempInput:focus {
+        border-color: #4285f4; /* Cambiamos el color del borde cuando está enfocado */
+    }
+
+    /* Estilos para el contenedor */
+    #inputContainer {
+        display: none;
+        margin-top: 20px;
+    }
+</style>
+
+
+
+<div style="display: inline;"> 
+    <button class="buttongreen " style= "margin-top: 1%; margin-bottom: -5%; margin-right: 15%; margin-left: -2%; background: #00a09d "  >Mostrar lista de pilones</button> 
+    </div>
+
+
+<div style="display: inline;"> 
+    <button class="buttongreen" style= "margin-top: 1%; margin-bottom: -5%; margin-right: 20%; background: #00a09d " id="input"   data-bs-toggle="modal" data-bs-target="#temperaturaManual">Temperatura manual</button> 
+
+</div>
+
+
+<div style="display: inline; ">
+<a id="save_Temp_Hum" class="btn btn-primary"
+style="background: #00a09d; border: 0px; margin-bottom: -5%; margin-left: -1%; border-radius: 15px; margin-top: 1%; font-size: 22px; font-weight: bold;" type="submit">Guardar temperatura</a>
+
+
+</div>
+<div class="card-container">
+ 
+    <div class="card" >
+        <div class="container">
+            <span class="temp tempbg">
+           
+            </span>
+            <span class="temp">
+                <img src="../../../../resources/images/temperatures.png">                
+            </span>
+        </div>
+        <div id="tempilo"  class="card-title card_title" style="color: #757419;">
+           <label style="  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3a43c54 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;"  for=""> Temperature</label>
+        </div>
+
+        <span style="display: block; text-align: center; margin: 0 auto;" id="display_temp" class="display_temp"></span>
+
+
+        <div class="temp-scale">
+            <span>Celsius</span>
+        </div>
+    </div>
+
+    
+
+    <div class="card card2 pilon_info" style="width: 25%; margin-left: -5%; margin-right: -5%;">
+        <p  style="text-align: justify;">Pilón: </p>
+        <p  style="text-align: justify;">Propiedad: </p>
+        <p  style="text-align: justify;">Variedad: </p>
+        <p  style="text-align: justify;">Corte: </p>
+        <p  style="text-align: justify;">Peso neto: </p>
+        <p  style="text-align: justify;">Temperatura mínima permitida: </p>
+        <p  style="text-align: justify;">Temperatura máxima permitida: </p>
+        <p  style="text-align: justify;">Dirección: </p>
+        <p  style="text-align: justify;">Fecha empilonado: </p>
+    </div>
+
+
+    <div class="card card2" >
+        <div class="container">
+            <span class="hum humbg">
+                <img src="../../../../resources/images/humidity.png">  
+            </span>
+            <span class="hum">
+                <img src="../../../../resources/images/humidity.png">  
+            </span>
+        </div>
+
+        <div id="humipilo" class="card-title card_title" style="color: #4c9beb;">
+            Humidity
+        </div>
+
+        <span class="display_hum"></span>
+
+        <div class="temp-scale">
+            <span id="individualrelative">Relative</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    // Obtener referencia al botón, input y span
+    var agregarTemperaturaBtn = document.getElementById('agregarTemperatura');
+    var tempInput = document.getElementById('temp');
+    var displayTemp = document.getElementById('display_temp');
+
+    // Variable para almacenar el contenido del span
+    var temperaturaGuardada = '';
+
+    // Agregar un evento de clic al botón
+    agregarTemperaturaBtn.addEventListener('click', function() {
+        // Obtener el valor del input
+        var temperatura = tempInput.value;
+        // Establecer el valor del input como texto del span
+        displayTemp.innerText = temperatura;
+        // Guardar el contenido del span en la variable
+        temperaturaGuardada = temperatura;
+    });
+
+    // Agregar un evento para cuando el modal se oculta
+    $('#createWorkerModal').on('hidden.bs.modal', function () {
+        // Restaurar el contenido del span cuando se oculta el modal
+        displayTemp.innerText = temperaturaGuardada;
+    });
+</script>
+<script src="/resources/js/language/_language_change.js" ></script>     
+<script src="/resources/js/_individual_scripts.js"></script>
+<script src="/resources/js/language/_language_individual.js"></script>
+<script src="/resources/js/language/_language_save.js"></script> 

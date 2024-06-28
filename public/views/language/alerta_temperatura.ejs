@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Notificaciones de temperatura</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+
+
+
+    <style>
+
+.card {
+            border-radius: 8px;
+            box-shadow: 0 12px 20px -10px rgba(0, 51, 153, 0.28), 
+0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 51, 153, 0.2);
+            background-color: #fff;
+            padding: 5%;
+            max-width: 40%;
+            max-height: 90%;
+            margin-top: 5%;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+     
+        form {
+            text-align: center;
+        }
+        input[type="email"] {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 3px solid #ccc;
+            width: 100%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            
+    
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        ::placeholder {
+            text-align: center !important;
+        }
+
+        
+        #correoMostrado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+
+    <%- include('../partials/modals/_modal_correo') %>
+    <%- include('../partials/modals/_modal_login_correo') %>
+    <%- include('../partials/modals/_modal_informacion_login') %>
+    <%- include('../partials/modals/_modal_variedad') %>
+    <%- include('../partials/modals/_modal_corte') %>
+    <%- include('../partials/modals/_modal_clase') %>
+    <%- include('../partials/modals/_modal_finca') %>
+    <%- include('../partials/modals/_modal_etapa') %>
+    <%- include('../partials/modals/_modal_tipo') %>
+    <%- include('../partials/modals/_modal_proceso') %>
+
+
+    <div  class="mt-2 toggle-div">
+        <label id="showcolumns" for="">Mostrar/Ocultar columnas: </label><a id="showardu" class="toggle-vis" data-column="0">Nombre</a>&nbsp;
+        <a class="toggle-vis" data-column="1">Cargo</a>&nbsp;
+      
+        <a class="toggle-vis"editArduinoModal data-column="2">Correo electrónico</a>&nbsp;
+      
+    </div>
+
+    <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+        <div class="table-responsive small justify-content-sm-center">
+            <table id="myTableCorreo" class="display table table-striped table-sm table-bordered">
+                <thead class="table-success">
+                    <tr>
+                        <th style="text-align: center;"  scope="col">Nombre </th>
+                        <th  style="text-align: center;"  scope="col">Cargo</th>   
+                        <th  style="text-align: center;"  scope="col">Correo electrónico</th>
+                        <th  style="text-align: center;"   scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody id="correoList">
+              
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+
+    <!-- 
+<div class="container">
+
+<div class="card">
+<h1>Notificaciones</h1> <br> 
+<form>
+    <label for="notificaciones">Ingrese el correo electrónico al que desea que se envíen las notificaciones.</label> <br> <br> <br>
+    <input onfocus="moveCursor()" placeholder="juandiaz@gmail.com" type="email" name="notificaciones" id="notificaciones" > <br> <br>
+    <button onclick="enviarCorreo()">Actualizar correo</button> <br> <br>
+</form>
+
+
+
+
+
+<p id="correoMostrado"></p>
+</div>
+</div>
+
+
+
+
+
+<script>
+    // Función para enviar el correo al servidor y guardar localmente
+    function enviarCorreo() {
+        const correo = document.getElementById('notificaciones').value;
+
+
+        if (correo.includes('@')) {
+
+
+        console.log("Correo enviado: " + correo);
+
+        const elementoCorreo = document.getElementById('correoMostrado');
+        elementoCorreo.textContent = "El correo actual es: " + correo;
+
+
+        // Enviar el correo al servidor mediante una solicitud POST
+        fetch('/actualizar-correo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ correo }), // Enviar el correo como parte del cuerpo de la solicitud
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al enviar el correo');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Respuesta del servidor:', data);
+
+            // Guardar el correo localmente
+            localStorage.setItem('correo', correo);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+
+}
+    // Cargar el correo desde el almacenamiento local al cargar la página
+    window.onload = function() {
+        const correoGuardado = localStorage.getItem('correo');
+        const elementoCorreo = document.getElementById('correoMostrado');
+        if (correoGuardado) {
+            elementoCorreo.textContent = "El correo actual es: " +  correoGuardado;
+        } else {
+            elementoCorreo.textContent = "No se ha guardado ningún correo aún.";
+        }
+
+
+        // Obtener el correo del servidor si está disponible
+        fetch('/obtener-correo')
+            .then(response => response.json())
+            .then(data => {
+                const correoServidor = data.correo;
+                if (correoServidor) {
+                    localStorage.setItem('correo', correoServidor);
+                    elementoCorreo.textContent = "El correo actual es: " +  correoServidor;
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener el correo:', error);
+            });
+
+    }
+
+</script>
+ --> 
+
+ <script src="/resources/js/_correo_scripts.js"></script>
+ <script src="/resources/js/_login_correo_scripts.js"></script>
+<script src="/resources/js/language/_language_change.js"></script>
+<script src="/resources/js/language/_language_save.js"></script>
+
+
+
+</body>
+</html>

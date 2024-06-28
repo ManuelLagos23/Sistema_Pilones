@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Individual</title>
+    <%- include('../partials//cdn_head/_cdn_head') %>
+        <script src="https://cdn.socket.io/4.0.1/socket.io.js"></script>
+        <link rel="stylesheet" href="resources/css/_buttons_home.css">
+        <link rel="stylesheet" href="resources/css/_card_individual.css">
+        <link rel="stylesheet" href="resources/css/_messages_individual.css">
+        <link rel="stylesheet" href="resources/css/_buttons_individual.css">
+        <link rel="stylesheet" href="resources/css/_list_individual.css">
+</head>
+
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+    <%- include('../partials/modals/_modal_individual') %><br>
+    <%- include('../partials/individual/_message') %>
+    <%- include('../partials/individual/_cards_individual') %>
+    <%- include('../partials/individual/_list_individual') %>
+    <%- include('../partials/individual/_buttons_individual') %>
+    <%- include('../partials/individual/_pilon_info') %>
+    <%- include('../partials/modals/_modal_temperatura') %>
+    <%- include('../partials/modals/_modal_variedad') %>
+    <%- include('../partials/modals/_modal_corte') %>
+    <%- include('../partials/modals/_modal_clase') %>
+    <%- include('../partials/modals/_modal_finca') %>
+    <%- include('../partials/modals/_modal_etapa') %>
+    <%- include('../partials/modals/_modal_tipo') %>
+    <%- include('../partials/modals/_modal_proceso') %>
+    <%- include('../partials/modals/_modal_correo') %>
+    <%- include('../partials/modals/_modal_login_correo') %>
+    <%- include('../partials/modals/_modal_informacion_login') %>
+    
+    <!-- SCRIPTS -->
+    <script src="/resources/js/_individual_scripts.js"></script>
+    <script src="/resources/js/language/_language_change.js" ></script>     
+    <script src="/resources/js/language/_language_save.js"></script> 
+    <script src="/resources/js/language/_language_home.js"></script>
+   
+    <script src="/resources/js/_correo_scripts.js"></script>
+    <script src="/resources/js/_login_correo_scripts.js"></script>
+</body>
+
+</html>

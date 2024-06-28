@@ -1,0 +1,40 @@
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" style="color: #ffffff;" id="successModalLabel"><i class="bi bi-check-lg"></i>
+                    Éxito</h5>
+            </div>
+            <div class="modal-body">
+                La temperatura se ha almacenado correctamente.
+ <img src="../../../../resources/images/temperatures.png" width="50" height="50" >
+
+            </div>
+     
+            <div class="modal-footer">
+                <a class="nav-link" style="background-color: #5f380071; padding: 5px; border-radius: 10px; color: white" href="/temp_history">&nbsp;Ver datos&nbsp;</a>
+
+                <p data-bs-dismiss="modal" style="background-color: #d34646d1; padding: 5px; border-radius: 10px; color: white;" onclick="selectedCard.classList.remove('card-clicked');">Close</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--ERROR MODAL -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #7c0808f4, #a80c0ce3, #eb0303c0);">
+                <h5 class="modal-title" style="color: #ffffff;" id="errorModalLabel"><i class="bi bi-emoji-frown"></i>
+                    Error</h5>
+            </div>
+            <div class="modal-body">
+              Se produjo un error al guardar las temperaturas. Asegúrese de que los valores de las temperaturas sean válidos.
+            </div>
+            <div class="modal-footer">
+                <p data-bs-dismiss="modal" style="background-color: #d34646d1; padding: 5px; border-radius: 10px; color: white;" onclick="selectedCard.classList.remove('card-clicked');">Cerrar</p>
+            </div>
+        </div>
+    </div>
+</div>

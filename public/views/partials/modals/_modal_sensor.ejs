@@ -1,0 +1,95 @@
+<!-- CREATION MODAL -->
+
+
+<div class="modal fade" id="createSensorModal" tabindex="-1" aria-labelledby="createArduinoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 45%;">
+        <div class="modal-content">
+            <div  class="modal-header" style="background: linear-gradient(to right, #114344f0, #207c7ef0, #2a9ea0f0);">
+                <h5  class="modal-title" style="color: #ffffff;" id="createArduinoModal"  ><i 
+                        class="bi bi-box-arrow-down"></i> <p id="titlearduino"  style="display: inline;"> Crear nuevo sensor</p></h5>
+            </div>
+            <div class="modal-body">
+                <form id="createSensorForm">
+
+                    <div class="row mb-3">
+                        <label id="" for="nombre_sensor" class="col-sm-3 col-form-label form-label0">Nombre del sensor</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre_sensor" class="form-control" placeholder="Example: Sensor 03"
+                                required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="direccion_bits" class="col-sm-3 col-form-label form-label0">Dirección DS18B20</label>
+                        <div class="col-sm-9">
+                            <input type="text" minlength="16" maxlength="16" id="direccion_sensor" class="form-control"
+                                placeholder="Example: 38BEFD79970003CB" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label id="arduinomodalassigned" for="pilon_encargado" class="col-sm-3 col-form-label form-label0">Arduino asignado</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" style="text-align: center;" id="arduino_asignado" required>
+                                <option id="arduino_asignado"  selected disabled readonly>Seleccione el arduino</option>
+                                <!-- Opciones de pilones cargadas dinámicamente -->
+                            </select><br>
+                        </div>
+                    </div>
+
+                  
+
+                    
+               
+                    <button id="arduinomodalsave" class="btn btn-success" data-toggle="modal" data-target="#createArduinoModal"
+                        style="background: #207c7ef0; border: 0px;">Guardar nuevo sensor</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="successSensorModal" tabindex="-1" aria-labelledby="successWorkerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" style="color: #ffffff;" id="successWorkerModalLabel"><i
+                        class="bi bi-check-lg"></i>
+                    Success</h5>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+            
+                <button type="button" class="btn"
+                    style="background-color: #d34646d1; padding: 5px; border-radius: 10px; color: white;"
+                    data-bs-dismiss="modal">Close</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="errorsensorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>No se pudo crear el sensor, verifique los datos y vuelva a intentarlo.</p>
+        </div>
+    </div>
+</div>
+</div>
+

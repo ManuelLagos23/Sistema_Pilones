@@ -1,0 +1,229 @@
+.card {
+  width: 25%;
+  height: 455px;
+  position: relative;
+  padding: 25px;
+  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3a43c25 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
+  box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.03), 0px 39px 39px rgba(0, 0, 0, 0.05), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+  cursor: pointer;
+  float: center;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.card2 {
+  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3a43c25 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
+}
+
+.card-container {
+  display: flex;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.cloud {
+  width: 250px;
+}
+
+.front {
+  padding-top: 45px;
+  margin-left: 25px;
+  display: inline;
+  position: absolute;
+  z-index: 11;
+  animation: clouds 8s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.back {
+  margin-top: -30px;
+  margin-left: 150px;
+  z-index: 12;
+  animation: clouds 12s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.right-front {
+  width: 45px;
+  height: 45px;
+  border-radius: 50% 50% 50% 0%;
+  background-color: #4c9beb;
+  display: inline-block;
+  margin-left: -25px;
+  z-index: 5;
+}
+
+.left-front {
+  width: 65px;
+  height: 65px;
+  border-radius: 50% 50% 0% 50%;
+  background-color: #4c9beb;
+  display: inline-block;
+  z-index: 5;
+}
+
+.right-back {
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 50% 50% 0%;
+  background-color: #4c9beb;
+  display: inline-block;
+  margin-left: -20px;
+  z-index: 5;
+}
+
+.left-back {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0% 50%;
+  background-color: #4c9beb;
+  display: inline-block;
+  z-index: 5;
+}
+
+.right-front2 {
+  width: 45px;
+  height: 45px;
+  border-radius: 50% 50% 50% 0%;
+  background-color: #fffc00;
+  display: inline-block;
+  margin-left: -25px;
+  z-index: 5;
+}
+
+.left-front2 {
+  width: 65px;
+  height: 65px;
+  border-radius: 50% 50% 0% 50%;
+  background-color: #fffc00;
+  display: inline-block;
+  z-index: 5;
+}
+
+.right-back2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 50% 50% 0%;
+  background-color: #fffc00;
+  display: inline-block;
+  margin-left: -20px;
+  z-index: 5;
+}
+
+.left-back2 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0% 50%;
+  background-color: #fffc00;
+  display: inline-block;
+  z-index: 5;
+}
+
+.temp {
+  margin-top: 0px;
+  border-radius: 120px;
+  display: inline;
+  position: absolute;
+  width: 320px;
+  height: 0px;
+  scale: 0.6;
+}
+
+.tempbg {
+  animation: sunshines 2s infinite;
+}
+
+.hum {
+  width: 320px;
+  height: 0px;
+  border-radius: 150px 0px 150px 150px;
+  display: inline;
+  position: absolute;
+  scale: 0.6;
+}
+
+.humbg {
+  animation: sunshines 2s infinite;
+}
+
+@keyframes sunshines {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-header span:first-child {
+  word-break: break-all;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 135%;
+  color: rgba(87, 77, 51, 0.66);
+}
+
+.card-header span:last-child {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 135%;
+  color: rgba(87, 77, 51, 0.33);
+}
+
+.display_temp,
+.display_hum {
+  position: absolute;
+  left: 25px;
+  bottom: 12px;
+  font-weight: 550;
+  font-size: 54px;
+  line-height: 77px;
+  color: rgba(87, 77, 51, 1);
+}
+
+.temp-scale {
+  width: 90px;
+  height: 46px;
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 9px;
+}
+
+.temp-scale span {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 134.49%;
+  color: rgba(87, 77, 51, 0.834);
+}
+
+.searchInput {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card_title{
+  font-size: 32px;
+  font-weight: 600;
+  margin-right: 150px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

@@ -1,0 +1,53 @@
+
+
+<div class="modal fade" id="informacionLoginModal" tabindex="-1" aria-labelledby="createLoginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 40%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #875a7b; border-radius: 5px;">
+                <h5 class="modal-title" style="color: #ffffff;" id="createLoginModal"><i
+                        class="bi bi-box-arrow-down"></i> <p id="titlelogin"  style="display: inline;">Correo remitente</p></h5>
+
+                        <a>
+                            <button  type="button" class="nav-link px-2"
+                            style="color: #FFFFFF;; background: #00a09d; padding: 4px; border-radius: 10px"
+                            data-bs-toggle="modal" data-bs-target="#createLoginCorreoModal"><i></i> Nuevo correo
+                                
+                            </button>
+                        </a>
+            </div>
+            <div class="modal-body">
+                <form id="informacionLoginForm">
+                    <div class="row mb-3">
+
+
+                        <label id="label_email" for="nombre" class="col-sm-3 col-form-label form-label0">Correo actual:</label>
+                        <div class="col-sm-7">
+                            <input style="text-align: center;" type="text" id="correo_info" name="correo_info" class="form-control"
+                           required disabled><br>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<div class="modal fade" id="successLoginModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"    style="background: #875a7b; border-radius: 5px;" >
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El nuevo remitente se agregó exitosamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
